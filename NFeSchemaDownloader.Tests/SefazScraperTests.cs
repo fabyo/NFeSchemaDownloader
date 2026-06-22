@@ -16,9 +16,6 @@ public class SefazScraperTests
         // This hits the real SEFAZ website. Playwright must be installed locally.
         var result = await scraper.ScrapeAsync();
 
-        // Assert
-        Assert.NotNull(result);
-        
         // Deve retornar pelo menos 1 pacote e pelo menos 1 cookie
         Assert.NotEmpty(result.Packages);
         Assert.NotEmpty(result.Cookies);
