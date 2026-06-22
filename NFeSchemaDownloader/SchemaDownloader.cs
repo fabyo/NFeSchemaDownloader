@@ -6,13 +6,13 @@ namespace NFeSchemaDownloader;
 
 public class SchemaDownloader
 {
-    private const string EXTRACTION_DIR = "schemas/v4";
+    private readonly string _extractionDir;
     private readonly HttpClient _httpClient;
 
-    public SchemaDownloader(IReadOnlyList<BrowserContextCookiesResult> cookies, string baseUrl)
+    public SchemaDownloader(IReadOnlyList<BrowserContextCookiesResult> cookies, string baseUrl, HttpMessageHandler? handler = null, string extractionDir = "schemas/v4")
     {
-        var handler = new HttpClientHandler { UseCookies = false };
-        _httpClient = new HttpClient(handler);
+        _extractionDir = extractionDir;
+        _httpClient = new HttpClient(handler ?? new HttpClientHandler { UseCookies = false });
         
         var cookieString = string.Join("; ", cookies.Select(c => $"{c.Name}={c.Value}"));
         _httpClient.DefaultRequestHeaders.Add("Cookie", cookieString);
@@ -33,7 +33,7 @@ public class SchemaDownloader
         Console.WriteLine($"Total de {sortedPackages.Count} pacotes relevantes encontrados. Iniciando downloads em ordem...");
         Console.WriteLine("-----------------------------------------------------");
 
-        Directory.CreateDirectory(EXTRACTION_DIR);
+        Directory.CreateDirectory(_extractionDir);
 
         foreach (var pkg in sortedPackages)
         {
@@ -77,7 +77,7 @@ public class SchemaDownloader
                 continue;
 
             var fileName = Path.GetFileName(entry.FullName);
-            var destPath = Path.Combine(EXTRACTION_DIR, fileName);
+            var destPath = Path.Combine(_extractionDir, fileName);
 
             Console.WriteLine($"📦 Extraindo XSD: {destPath}");
 
