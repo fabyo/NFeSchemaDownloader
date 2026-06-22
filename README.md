@@ -1,8 +1,4 @@
-<div align="center">
-  <img src="https://raw.githubusercontent.com/fabyo/NFeSchemaDownloader/main/logo-200.png" alt="NFeSchemaDownloader Logo" />
-</div>
-
-<br/>
+<img src="https://raw.githubusercontent.com/fabyo/NFeSchemaDownloader/main/logo-200.png" alt="NFeSchemaDownloader Logo" />
 
 [![NuGet](https://img.shields.io/nuget/v/NFeSchemaDownloader.svg)](https://www.nuget.org/packages/NFeSchemaDownloader)
 [![Build](https://github.com/fabyo/NFeSchemaDownloader/actions/workflows/ci.yml/badge.svg)](https://github.com/fabyo/NFeSchemaDownloader/actions/workflows/ci.yml)
