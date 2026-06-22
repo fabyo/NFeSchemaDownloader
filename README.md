@@ -1,9 +1,10 @@
 ![Logo](https://raw.githubusercontent.com/fabyo/NFeSchemaDownloader/main/logo-200.png)
 
 [![NuGet](https://img.shields.io/nuget/v/NFeSchemaDownloader.svg)](https://www.nuget.org/packages/NFeSchemaDownloader)
-[![Build](https://github.com/fabyo/NFeSchemaDownloader/actions/workflows/ci.yml/badge.svg)](https://github.com/fabyo/NFeSchemaDownloader/actions/workflows/ci.yml)
-[![Scorecard](https://github.com/fabyo/NFeSchemaDownloader/actions/workflows/scorecard.yml/badge.svg)](https://github.com/fabyo/NFeSchemaDownloader/actions/workflows/scorecard.yml)
 [![Downloads](https://img.shields.io/nuget/dt/NFeSchemaDownloader.svg)](https://www.nuget.org/packages/NFeSchemaDownloader)
+[![Build](https://github.com/fabyo/NFeSchemaDownloader/actions/workflows/ci.yml/badge.svg)](https://github.com/fabyo/NFeSchemaDownloader/actions/workflows/ci.yml)
+[![Publish](https://github.com/fabyo/NFeSchemaDownloader/actions/workflows/publish.yml/badge.svg)](https://github.com/fabyo/NFeSchemaDownloader/actions/workflows/publish.yml)
+[![Scorecard](https://github.com/fabyo/NFeSchemaDownloader/actions/workflows/scorecard.yml/badge.svg)](https://github.com/fabyo/NFeSchemaDownloader/actions/workflows/scorecard.yml)
 [![GitHub stars](https://img.shields.io/github/stars/fabyo/NFeSchemaDownloader)](https://github.com/fabyo/NFeSchemaDownloader)
 [![License](https://img.shields.io/github/license/fabyo/NFeSchemaDownloader)](https://github.com/fabyo/NFeSchemaDownloader)
 
