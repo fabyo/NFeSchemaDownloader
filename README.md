@@ -66,7 +66,7 @@ O ecossistema fiscal open-source é gigante! Conheça também:
 
 | Projeto | Descrição |
 |---|---|
-| [NFEDanfe](https://github.com/fabyo/NFEDanfe) | Gera PDFs bonitos de DANFE a partir de XMLs da NF-e autorizada. |
+| [NFEDanfe](https://github.com/fabyo/NFEDanfe) | Gera PDFs oficiais e bem feitos de DANFE a partir de XMLs da NF-e autorizada. |
 | [NFEConsulta](https://github.com/fabyo/NFEConsulta) | Consulta NF-e, valida XML e verifica status oficial da SEFAZ. |
 
 ### Fluxo recomendado

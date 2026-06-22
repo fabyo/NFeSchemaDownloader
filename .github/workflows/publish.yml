@@ -40,7 +40,8 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add schemas/
-          if git diff-index --quiet HEAD; then
+          FORCE_PUBLISH=$(git log -1 --pretty=%B | grep -i '\[force publish\]' || true)
+          if git diff-index --quiet HEAD && [ -z "$FORCE_PUBLISH" ]; then
             echo "No new schemas downloaded. Creating keep-alive commit to prevent workflow suspension."
             git commit --allow-empty -m "chore: keep-alive workflow to prevent suspension"
             git push origin HEAD
