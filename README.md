@@ -1,10 +1,17 @@
-![Logo](https://raw.githubusercontent.com/fabyo/NFeSchemaDownloader/main/logo-200.png)
+<div align="center">
+  <img src="https://raw.githubusercontent.com/fabyo/NFeSchemaDownloader/main/logo-200.png" alt="NFeSchemaDownloader Logo" />
+</div>
+
+<br/>
 
 [![NuGet](https://img.shields.io/nuget/v/NFeSchemaDownloader.svg)](https://www.nuget.org/packages/NFeSchemaDownloader)
+[![Build](https://github.com/fabyo/NFeSchemaDownloader/actions/workflows/ci.yml/badge.svg)](https://github.com/fabyo/NFeSchemaDownloader/actions/workflows/ci.yml)
+[![Scorecard](https://github.com/fabyo/NFeSchemaDownloader/actions/workflows/scorecard.yml/badge.svg)](https://github.com/fabyo/NFeSchemaDownloader/actions/workflows/scorecard.yml)
 [![Downloads](https://img.shields.io/nuget/dt/NFeSchemaDownloader.svg)](https://www.nuget.org/packages/NFeSchemaDownloader)
-[![Build](https://github.com/fabyo/NFeSchemaDownloader/actions/workflows/publish.yml/badge.svg)](https://github.com/fabyo/NFeSchemaDownloader/actions/workflows/publish.yml)
 [![GitHub stars](https://img.shields.io/github/stars/fabyo/NFeSchemaDownloader)](https://github.com/fabyo/NFeSchemaDownloader)
 [![License](https://img.shields.io/github/license/fabyo/NFeSchemaDownloader)](https://github.com/fabyo/NFeSchemaDownloader)
+
+**NFeSchemaDownloader** é uma biblioteca .NET projetada para resolver a dor de cabeça de manter os arquivos XSD da SEFAZ atualizados nos seus projetos de NF-e/NFC-e.
 
 Biblioteca e CLI em .NET para realizar o download automático e a manutenção dos Schemas XML (XSD) oficiais da SEFAZ utilizando Playwright.
 
