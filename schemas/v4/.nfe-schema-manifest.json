@@ -1,0 +1,1902 @@
+{
+  "Version": 1,
+  "Packages": [
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=KPKKxDMtJ50=",
+      "Text": "Esquemas XML NF-e - Pacote de Libera\u00E7\u00E3o No. 9 (novo leiaute da NF-e, NT 2016.002 v.1.10) (10/04/2017) (ZIP)",
+      "PublishedAt": "2017-04-10T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:46.7332597+00:00",
+      "Files": [
+        {
+          "FileName": "consReciNFe_v4.00.xsd",
+          "Length": 619,
+          "Sha256": "0520356a8ac619c8730f793ed2a955418ce5a138b6811f3a6f2c0e72017002c5"
+        },
+        {
+          "FileName": "consSitNFe_v4.00.xsd",
+          "Length": 577,
+          "Sha256": "44d816a725553a0c53508be919629c9235b42c5d41c358a05be8fdf61945f5c1"
+        },
+        {
+          "FileName": "consStatServ_v4.00.xsd",
+          "Length": 604,
+          "Sha256": "20c2cae522ac79ea52353ca66d7595c6616a46a491e561b076145fe8574b8773"
+        },
+        {
+          "FileName": "enviNFe_v4.00.xsd",
+          "Length": 609,
+          "Sha256": "9ba17a12e3fd6e153bd8676450526ba3bcfc15b75ecb372823826ee827b8c3ef"
+        },
+        {
+          "FileName": "inutNFe_v4.00.xsd",
+          "Length": 615,
+          "Sha256": "d50dd40f010634d8576ad880552a3d186bd4cfe0a4b554f3097dae2cc5c6a59e"
+        },
+        {
+          "FileName": "leiauteConsSitNFe_v4.00.xsd",
+          "Length": 20502,
+          "Sha256": "e74e697bc033d8eec01ff75487eb649598250dd7715f6d120eec817fb2506e8e"
+        },
+        {
+          "FileName": "leiauteConsStatServ_v4.00.xsd",
+          "Length": 4000,
+          "Sha256": "cdc0813b5bf0087c7c8510f6ea0c2a367c829d9ea4b44c23533d18d3bcf23375"
+        },
+        {
+          "FileName": "leiauteInutNFe_v4.00.xsd",
+          "Length": 7994,
+          "Sha256": "fd501253ebc1400ef8a753f6ff8dffbf4f5bd07461f1d789c38839c26d26928c"
+        },
+        {
+          "FileName": "nfe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "66a117aaa78687fdb1355fc32a380ec859f3a98e850d7c4de5a07935eb1a6030"
+        },
+        {
+          "FileName": "procInutNFe_v4.00.xsd",
+          "Length": 588,
+          "Sha256": "c71ce9ed656e22161923d77af47839421fa41c63703a064655880fed76e20334"
+        },
+        {
+          "FileName": "procNFe_v4.00.xsd",
+          "Length": 531,
+          "Sha256": "b7af3072ff7398aa557c42bc6d8198dd3c006b1a6ecaad66bc839a5c34cbcb84"
+        },
+        {
+          "FileName": "retConsReciNFe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "5cc8219feac16f43a21e168ec4cbf8d0dcf8dade5dccf3f07a42f538519129e9"
+        },
+        {
+          "FileName": "retConsSitNFe_v4.00.xsd",
+          "Length": 611,
+          "Sha256": "8b7188d6fe9e879ca057bfb68600746c7491d2e092e3dc5121a6cd5aa79272d5"
+        },
+        {
+          "FileName": "retConsStatServ_v4.00.xsd",
+          "Length": 613,
+          "Sha256": "337ceed7f74c0764edbc8a18feacaf8c33f66aa951c46b4b29b561cda7c2f7fb"
+        },
+        {
+          "FileName": "retEnviNFe_v4.00.xsd",
+          "Length": 626,
+          "Sha256": "d58b700f849ea7df9f1d35580ae0de425dfa1e295408c02609b81905b04ce4ce"
+        },
+        {
+          "FileName": "retInutNFe_v4.00.xsd",
+          "Length": 632,
+          "Sha256": "8b5590f79c157510c5f65a43c7325008c01677ebf24e14eef26e4817ea2673a1"
+        },
+        {
+          "FileName": "tiposBasico_v4.00.xsd",
+          "Length": 21988,
+          "Sha256": "63d393d69fb63568e39277d9794348fbe107e1c15d2dbce32fb63b6e41472c6d"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        },
+        {
+          "FileName": "leiauteNFe_v4.00.xsd",
+          "Length": 351128,
+          "Sha256": "7d8af488538fe78809088f9c494cb7521ae856982210fd13a25496ccf429c8c1"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=51K60G9B2Ss=",
+      "Text": "Esquemas XML NF-e - Pacote de Libera\u00E7\u00E3o No. 9 (Novo leiaute da NF-e, NT 2016.002 v.1.50) (27/04/2017) (ZIP)",
+      "PublishedAt": "2017-04-27T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:47.0991266+00:00",
+      "Files": [
+        {
+          "FileName": "consReciNFe_v4.00.xsd",
+          "Length": 619,
+          "Sha256": "0520356a8ac619c8730f793ed2a955418ce5a138b6811f3a6f2c0e72017002c5"
+        },
+        {
+          "FileName": "consSitNFe_v4.00.xsd",
+          "Length": 577,
+          "Sha256": "44d816a725553a0c53508be919629c9235b42c5d41c358a05be8fdf61945f5c1"
+        },
+        {
+          "FileName": "consStatServ_v4.00.xsd",
+          "Length": 604,
+          "Sha256": "20c2cae522ac79ea52353ca66d7595c6616a46a491e561b076145fe8574b8773"
+        },
+        {
+          "FileName": "enviNFe_v4.00.xsd",
+          "Length": 609,
+          "Sha256": "9ba17a12e3fd6e153bd8676450526ba3bcfc15b75ecb372823826ee827b8c3ef"
+        },
+        {
+          "FileName": "inutNFe_v4.00.xsd",
+          "Length": 615,
+          "Sha256": "d50dd40f010634d8576ad880552a3d186bd4cfe0a4b554f3097dae2cc5c6a59e"
+        },
+        {
+          "FileName": "leiauteConsSitNFe_v4.00.xsd",
+          "Length": 20502,
+          "Sha256": "e74e697bc033d8eec01ff75487eb649598250dd7715f6d120eec817fb2506e8e"
+        },
+        {
+          "FileName": "leiauteConsStatServ_v4.00.xsd",
+          "Length": 4000,
+          "Sha256": "cdc0813b5bf0087c7c8510f6ea0c2a367c829d9ea4b44c23533d18d3bcf23375"
+        },
+        {
+          "FileName": "leiauteInutNFe_v4.00.xsd",
+          "Length": 7994,
+          "Sha256": "fd501253ebc1400ef8a753f6ff8dffbf4f5bd07461f1d789c38839c26d26928c"
+        },
+        {
+          "FileName": "leiauteNFe_v4.00.xsd",
+          "Length": 351128,
+          "Sha256": "7d8af488538fe78809088f9c494cb7521ae856982210fd13a25496ccf429c8c1"
+        },
+        {
+          "FileName": "nfe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "66a117aaa78687fdb1355fc32a380ec859f3a98e850d7c4de5a07935eb1a6030"
+        },
+        {
+          "FileName": "procInutNFe_v4.00.xsd",
+          "Length": 588,
+          "Sha256": "c71ce9ed656e22161923d77af47839421fa41c63703a064655880fed76e20334"
+        },
+        {
+          "FileName": "procNFe_v4.00.xsd",
+          "Length": 531,
+          "Sha256": "b7af3072ff7398aa557c42bc6d8198dd3c006b1a6ecaad66bc839a5c34cbcb84"
+        },
+        {
+          "FileName": "retConsReciNFe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "5cc8219feac16f43a21e168ec4cbf8d0dcf8dade5dccf3f07a42f538519129e9"
+        },
+        {
+          "FileName": "retConsSitNFe_v4.00.xsd",
+          "Length": 611,
+          "Sha256": "8b7188d6fe9e879ca057bfb68600746c7491d2e092e3dc5121a6cd5aa79272d5"
+        },
+        {
+          "FileName": "retConsStatServ_v4.00.xsd",
+          "Length": 613,
+          "Sha256": "337ceed7f74c0764edbc8a18feacaf8c33f66aa951c46b4b29b561cda7c2f7fb"
+        },
+        {
+          "FileName": "retEnviNFe_v4.00.xsd",
+          "Length": 626,
+          "Sha256": "d58b700f849ea7df9f1d35580ae0de425dfa1e295408c02609b81905b04ce4ce"
+        },
+        {
+          "FileName": "retInutNFe_v4.00.xsd",
+          "Length": 632,
+          "Sha256": "8b5590f79c157510c5f65a43c7325008c01677ebf24e14eef26e4817ea2673a1"
+        },
+        {
+          "FileName": "tiposBasico_v4.00.xsd",
+          "Length": 21988,
+          "Sha256": "63d393d69fb63568e39277d9794348fbe107e1c15d2dbce32fb63b6e41472c6d"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=P7nq1EHFeu8=",
+      "Text": "Esquemas XML NF-e - Pacote de Libera\u00E7\u00E3o No. 9 (novo leiaute da NF-e, NT 2016.002 v.1.30) (14/09/2017) (ZIP)",
+      "PublishedAt": "2017-09-14T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:47.6434128+00:00",
+      "Files": [
+        {
+          "FileName": "consReciNFe_v4.00.xsd",
+          "Length": 619,
+          "Sha256": "0520356a8ac619c8730f793ed2a955418ce5a138b6811f3a6f2c0e72017002c5"
+        },
+        {
+          "FileName": "consSitNFe_v4.00.xsd",
+          "Length": 577,
+          "Sha256": "44d816a725553a0c53508be919629c9235b42c5d41c358a05be8fdf61945f5c1"
+        },
+        {
+          "FileName": "consStatServ_v4.00.xsd",
+          "Length": 604,
+          "Sha256": "20c2cae522ac79ea52353ca66d7595c6616a46a491e561b076145fe8574b8773"
+        },
+        {
+          "FileName": "enviNFe_v4.00.xsd",
+          "Length": 609,
+          "Sha256": "9ba17a12e3fd6e153bd8676450526ba3bcfc15b75ecb372823826ee827b8c3ef"
+        },
+        {
+          "FileName": "inutNFe_v4.00.xsd",
+          "Length": 615,
+          "Sha256": "d50dd40f010634d8576ad880552a3d186bd4cfe0a4b554f3097dae2cc5c6a59e"
+        },
+        {
+          "FileName": "leiauteConsSitNFe_v4.00.xsd",
+          "Length": 20502,
+          "Sha256": "e74e697bc033d8eec01ff75487eb649598250dd7715f6d120eec817fb2506e8e"
+        },
+        {
+          "FileName": "leiauteConsStatServ_v4.00.xsd",
+          "Length": 4000,
+          "Sha256": "cdc0813b5bf0087c7c8510f6ea0c2a367c829d9ea4b44c23533d18d3bcf23375"
+        },
+        {
+          "FileName": "leiauteInutNFe_v4.00.xsd",
+          "Length": 7994,
+          "Sha256": "fd501253ebc1400ef8a753f6ff8dffbf4f5bd07461f1d789c38839c26d26928c"
+        },
+        {
+          "FileName": "nfe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "66a117aaa78687fdb1355fc32a380ec859f3a98e850d7c4de5a07935eb1a6030"
+        },
+        {
+          "FileName": "procInutNFe_v4.00.xsd",
+          "Length": 588,
+          "Sha256": "c71ce9ed656e22161923d77af47839421fa41c63703a064655880fed76e20334"
+        },
+        {
+          "FileName": "procNFe_v4.00.xsd",
+          "Length": 531,
+          "Sha256": "b7af3072ff7398aa557c42bc6d8198dd3c006b1a6ecaad66bc839a5c34cbcb84"
+        },
+        {
+          "FileName": "retConsReciNFe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "5cc8219feac16f43a21e168ec4cbf8d0dcf8dade5dccf3f07a42f538519129e9"
+        },
+        {
+          "FileName": "retConsSitNFe_v4.00.xsd",
+          "Length": 611,
+          "Sha256": "8b7188d6fe9e879ca057bfb68600746c7491d2e092e3dc5121a6cd5aa79272d5"
+        },
+        {
+          "FileName": "retConsStatServ_v4.00.xsd",
+          "Length": 613,
+          "Sha256": "337ceed7f74c0764edbc8a18feacaf8c33f66aa951c46b4b29b561cda7c2f7fb"
+        },
+        {
+          "FileName": "retEnviNFe_v4.00.xsd",
+          "Length": 626,
+          "Sha256": "d58b700f849ea7df9f1d35580ae0de425dfa1e295408c02609b81905b04ce4ce"
+        },
+        {
+          "FileName": "retInutNFe_v4.00.xsd",
+          "Length": 632,
+          "Sha256": "8b5590f79c157510c5f65a43c7325008c01677ebf24e14eef26e4817ea2673a1"
+        },
+        {
+          "FileName": "tiposBasico_v4.00.xsd",
+          "Length": 21988,
+          "Sha256": "63d393d69fb63568e39277d9794348fbe107e1c15d2dbce32fb63b6e41472c6d"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        },
+        {
+          "FileName": "leiauteNFe_v4.00.xsd",
+          "Length": 351128,
+          "Sha256": "7d8af488538fe78809088f9c494cb7521ae856982210fd13a25496ccf429c8c1"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=hf4wldv89mQ=",
+      "Text": "Esquemas XML NF-e - Pacote de Libera\u00E7\u00E3o No. 9 (Novo leiaute da NF-e, NT 2016.002 v.1.40) (24/10/2017) (ZIP)",
+      "PublishedAt": "2017-10-24T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:47.8743616+00:00",
+      "Files": [
+        {
+          "FileName": "leiauteNFe_v4.00.xsd",
+          "Length": 351128,
+          "Sha256": "7d8af488538fe78809088f9c494cb7521ae856982210fd13a25496ccf429c8c1"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        },
+        {
+          "FileName": "tiposBasico_v4.00.xsd",
+          "Length": 21988,
+          "Sha256": "63d393d69fb63568e39277d9794348fbe107e1c15d2dbce32fb63b6e41472c6d"
+        },
+        {
+          "FileName": "retInutNFe_v4.00.xsd",
+          "Length": 632,
+          "Sha256": "8b5590f79c157510c5f65a43c7325008c01677ebf24e14eef26e4817ea2673a1"
+        },
+        {
+          "FileName": "retEnviNFe_v4.00.xsd",
+          "Length": 626,
+          "Sha256": "d58b700f849ea7df9f1d35580ae0de425dfa1e295408c02609b81905b04ce4ce"
+        },
+        {
+          "FileName": "retConsStatServ_v4.00.xsd",
+          "Length": 613,
+          "Sha256": "337ceed7f74c0764edbc8a18feacaf8c33f66aa951c46b4b29b561cda7c2f7fb"
+        },
+        {
+          "FileName": "retConsSitNFe_v4.00.xsd",
+          "Length": 611,
+          "Sha256": "8b7188d6fe9e879ca057bfb68600746c7491d2e092e3dc5121a6cd5aa79272d5"
+        },
+        {
+          "FileName": "retConsReciNFe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "5cc8219feac16f43a21e168ec4cbf8d0dcf8dade5dccf3f07a42f538519129e9"
+        },
+        {
+          "FileName": "procNFe_v4.00.xsd",
+          "Length": 531,
+          "Sha256": "b7af3072ff7398aa557c42bc6d8198dd3c006b1a6ecaad66bc839a5c34cbcb84"
+        },
+        {
+          "FileName": "procInutNFe_v4.00.xsd",
+          "Length": 588,
+          "Sha256": "c71ce9ed656e22161923d77af47839421fa41c63703a064655880fed76e20334"
+        },
+        {
+          "FileName": "nfe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "66a117aaa78687fdb1355fc32a380ec859f3a98e850d7c4de5a07935eb1a6030"
+        },
+        {
+          "FileName": "leiauteInutNFe_v4.00.xsd",
+          "Length": 7994,
+          "Sha256": "fd501253ebc1400ef8a753f6ff8dffbf4f5bd07461f1d789c38839c26d26928c"
+        },
+        {
+          "FileName": "leiauteConsStatServ_v4.00.xsd",
+          "Length": 4000,
+          "Sha256": "cdc0813b5bf0087c7c8510f6ea0c2a367c829d9ea4b44c23533d18d3bcf23375"
+        },
+        {
+          "FileName": "leiauteConsSitNFe_v4.00.xsd",
+          "Length": 20502,
+          "Sha256": "e74e697bc033d8eec01ff75487eb649598250dd7715f6d120eec817fb2506e8e"
+        },
+        {
+          "FileName": "inutNFe_v4.00.xsd",
+          "Length": 615,
+          "Sha256": "d50dd40f010634d8576ad880552a3d186bd4cfe0a4b554f3097dae2cc5c6a59e"
+        },
+        {
+          "FileName": "enviNFe_v4.00.xsd",
+          "Length": 609,
+          "Sha256": "9ba17a12e3fd6e153bd8676450526ba3bcfc15b75ecb372823826ee827b8c3ef"
+        },
+        {
+          "FileName": "consStatServ_v4.00.xsd",
+          "Length": 604,
+          "Sha256": "20c2cae522ac79ea52353ca66d7595c6616a46a491e561b076145fe8574b8773"
+        },
+        {
+          "FileName": "consSitNFe_v4.00.xsd",
+          "Length": 577,
+          "Sha256": "44d816a725553a0c53508be919629c9235b42c5d41c358a05be8fdf61945f5c1"
+        },
+        {
+          "FileName": "consReciNFe_v4.00.xsd",
+          "Length": 619,
+          "Sha256": "0520356a8ac619c8730f793ed2a955418ce5a138b6811f3a6f2c0e72017002c5"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=WBAhKoN7XPo=",
+      "Text": "Esquemas XML NF-e - Pacote de Libera\u00E7\u00E3o No. 9 (Novas valida\u00E7\u00F5es do GTIN, Nota T\u00E9cnica 2017.001 v.1.00) (06/12/2017) (ZIP)",
+      "PublishedAt": "2017-12-06T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:48.0617915+00:00",
+      "Files": [
+        {
+          "FileName": "leiauteNFe_v4.00.xsd",
+          "Length": 351128,
+          "Sha256": "7d8af488538fe78809088f9c494cb7521ae856982210fd13a25496ccf429c8c1"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        },
+        {
+          "FileName": "tiposBasico_v4.00.xsd",
+          "Length": 21988,
+          "Sha256": "63d393d69fb63568e39277d9794348fbe107e1c15d2dbce32fb63b6e41472c6d"
+        },
+        {
+          "FileName": "retInutNFe_v4.00.xsd",
+          "Length": 632,
+          "Sha256": "8b5590f79c157510c5f65a43c7325008c01677ebf24e14eef26e4817ea2673a1"
+        },
+        {
+          "FileName": "retEnviNFe_v4.00.xsd",
+          "Length": 626,
+          "Sha256": "d58b700f849ea7df9f1d35580ae0de425dfa1e295408c02609b81905b04ce4ce"
+        },
+        {
+          "FileName": "retConsStatServ_v4.00.xsd",
+          "Length": 613,
+          "Sha256": "337ceed7f74c0764edbc8a18feacaf8c33f66aa951c46b4b29b561cda7c2f7fb"
+        },
+        {
+          "FileName": "retConsSitNFe_v4.00.xsd",
+          "Length": 611,
+          "Sha256": "8b7188d6fe9e879ca057bfb68600746c7491d2e092e3dc5121a6cd5aa79272d5"
+        },
+        {
+          "FileName": "retConsReciNFe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "5cc8219feac16f43a21e168ec4cbf8d0dcf8dade5dccf3f07a42f538519129e9"
+        },
+        {
+          "FileName": "procNFe_v4.00.xsd",
+          "Length": 531,
+          "Sha256": "b7af3072ff7398aa557c42bc6d8198dd3c006b1a6ecaad66bc839a5c34cbcb84"
+        },
+        {
+          "FileName": "procInutNFe_v4.00.xsd",
+          "Length": 588,
+          "Sha256": "c71ce9ed656e22161923d77af47839421fa41c63703a064655880fed76e20334"
+        },
+        {
+          "FileName": "nfe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "66a117aaa78687fdb1355fc32a380ec859f3a98e850d7c4de5a07935eb1a6030"
+        },
+        {
+          "FileName": "leiauteInutNFe_v4.00.xsd",
+          "Length": 7994,
+          "Sha256": "fd501253ebc1400ef8a753f6ff8dffbf4f5bd07461f1d789c38839c26d26928c"
+        },
+        {
+          "FileName": "leiauteConsStatServ_v4.00.xsd",
+          "Length": 4000,
+          "Sha256": "cdc0813b5bf0087c7c8510f6ea0c2a367c829d9ea4b44c23533d18d3bcf23375"
+        },
+        {
+          "FileName": "leiauteConsSitNFe_v4.00.xsd",
+          "Length": 20502,
+          "Sha256": "e74e697bc033d8eec01ff75487eb649598250dd7715f6d120eec817fb2506e8e"
+        },
+        {
+          "FileName": "inutNFe_v4.00.xsd",
+          "Length": 615,
+          "Sha256": "d50dd40f010634d8576ad880552a3d186bd4cfe0a4b554f3097dae2cc5c6a59e"
+        },
+        {
+          "FileName": "enviNFe_v4.00.xsd",
+          "Length": 609,
+          "Sha256": "9ba17a12e3fd6e153bd8676450526ba3bcfc15b75ecb372823826ee827b8c3ef"
+        },
+        {
+          "FileName": "consStatServ_v4.00.xsd",
+          "Length": 604,
+          "Sha256": "20c2cae522ac79ea52353ca66d7595c6616a46a491e561b076145fe8574b8773"
+        },
+        {
+          "FileName": "consSitNFe_v4.00.xsd",
+          "Length": 577,
+          "Sha256": "44d816a725553a0c53508be919629c9235b42c5d41c358a05be8fdf61945f5c1"
+        },
+        {
+          "FileName": "consReciNFe_v4.00.xsd",
+          "Length": 619,
+          "Sha256": "0520356a8ac619c8730f793ed2a955418ce5a138b6811f3a6f2c0e72017002c5"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=yA5Y2t7Zdn8=",
+      "Text": "Esquemas XML NF-e - Pacote de Libera\u00E7\u00E3o Evento de Averba\u00E7\u00E3o v1.00 (atualizado em 23/08/2018) (ZIP)",
+      "PublishedAt": "2018-08-23T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:48.2656148+00:00",
+      "Files": [
+        {
+          "FileName": "Averb_v1.00.xsd",
+          "Length": 661,
+          "Sha256": "d8c07735204a581a504df512f88de2b0053d8f3febadc3cd7884062e19ea59fd"
+        },
+        {
+          "FileName": "e790700_v1.00.xsd",
+          "Length": 6775,
+          "Sha256": "defac96a3cbb4b2bbf042383281e40ee65151b14b858cb5cab2a8e7715378a4a"
+        },
+        {
+          "FileName": "envAverb_v1.00.xsd",
+          "Length": 589,
+          "Sha256": "1f47cbf61b12b51ffec4ce1d14a1c2205057d2244bd198d581930b6b4c665e24"
+        },
+        {
+          "FileName": "leiauteAverb_v1.00.xsd",
+          "Length": 21839,
+          "Sha256": "ad0046769de4dea04e761cfd6ab2b21bc57540f4fc3c2ddb908e1c0f2d2f47b3"
+        },
+        {
+          "FileName": "procAverbNFe_v1.00.xsd",
+          "Length": 627,
+          "Sha256": "f194b4edd46a9652f358549e440af8cbd6b4c4694341f7adc948ca2edaac44e5"
+        },
+        {
+          "FileName": "retEnvAverb_v1.00.xsd",
+          "Length": 593,
+          "Sha256": "928f9c538bc72acee4b1b0716f34b2b3f790a029691a71ad47f9bcd1b174e40d"
+        },
+        {
+          "FileName": "tiposBasico_v1.03.xsd",
+          "Length": 31233,
+          "Sha256": "f20b13ad50eac1235aac2114fd1a98d89527c4bf895cb4e7a73342eaf53780da"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=i8zkC4UsoIc=",
+      "Text": "Esquemas XML NF-e - Pacote de Libera\u00E7\u00E3o Distribui\u00E7\u00E3o de DF-e v.1.03. Publicado em 23/06/2022 (ZIP)",
+      "PublishedAt": "2022-06-23T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:48.795697+00:00",
+      "Files": [
+        {
+          "FileName": "distDFeInt_v1.01.xsd",
+          "Length": 2990,
+          "Sha256": "ea4da56b30dcc36fdecec1670a646f2fc5f0bbaf3f6597ba269064254f7333db"
+        },
+        {
+          "FileName": "resEvento_v1.01.xsd",
+          "Length": 3498,
+          "Sha256": "44359e6cc81f6e44471fb89c440c5655d49ac1ce5616e660beed7de8944300a2"
+        },
+        {
+          "FileName": "resNFe_v1.01.xsd",
+          "Length": 3773,
+          "Sha256": "9ac5ebb3967fc3e22958b298bcaef8d44f79ae26cb914c6aa56dc49b4234d0d2"
+        },
+        {
+          "FileName": "retDistDFeInt_v1.01.xsd",
+          "Length": 3349,
+          "Sha256": "f8faa44cc06ce1756a203a9e3693a8486ba87ca3799c5513e7b5b877812138dc"
+        },
+        {
+          "FileName": "tiposDistDFe_v1.01.xsd",
+          "Length": 6877,
+          "Sha256": "d8741cb99c9a73bc82ca1d2126dcf2782f63d472731d6ff6f090ee1f13077486"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=yxUPAVPKsmA=",
+      "Text": "Esquema XML NF-e/NFC-e - Pacote de Libera\u00E7\u00E3o n\u00BA 9o (Novo leiaute da NF-e, NT 2024.001 v.1.00) (ZIP). Publicado em 04/06/2024",
+      "PublishedAt": "2024-06-04T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:48.9776336+00:00",
+      "Files": [
+        {
+          "FileName": "consReciNFe_v4.00.xsd",
+          "Length": 619,
+          "Sha256": "0520356a8ac619c8730f793ed2a955418ce5a138b6811f3a6f2c0e72017002c5"
+        },
+        {
+          "FileName": "consSitNFe_v4.00.xsd",
+          "Length": 577,
+          "Sha256": "44d816a725553a0c53508be919629c9235b42c5d41c358a05be8fdf61945f5c1"
+        },
+        {
+          "FileName": "consStatServ_v4.00.xsd",
+          "Length": 604,
+          "Sha256": "20c2cae522ac79ea52353ca66d7595c6616a46a491e561b076145fe8574b8773"
+        },
+        {
+          "FileName": "enviNFe_v4.00.xsd",
+          "Length": 609,
+          "Sha256": "9ba17a12e3fd6e153bd8676450526ba3bcfc15b75ecb372823826ee827b8c3ef"
+        },
+        {
+          "FileName": "inutNFe_v4.00.xsd",
+          "Length": 615,
+          "Sha256": "d50dd40f010634d8576ad880552a3d186bd4cfe0a4b554f3097dae2cc5c6a59e"
+        },
+        {
+          "FileName": "leiauteConsSitNFe_v4.00.xsd",
+          "Length": 20502,
+          "Sha256": "e74e697bc033d8eec01ff75487eb649598250dd7715f6d120eec817fb2506e8e"
+        },
+        {
+          "FileName": "leiauteConsStatServ_v4.00.xsd",
+          "Length": 4000,
+          "Sha256": "cdc0813b5bf0087c7c8510f6ea0c2a367c829d9ea4b44c23533d18d3bcf23375"
+        },
+        {
+          "FileName": "leiauteInutNFe_v4.00.xsd",
+          "Length": 7994,
+          "Sha256": "fd501253ebc1400ef8a753f6ff8dffbf4f5bd07461f1d789c38839c26d26928c"
+        },
+        {
+          "FileName": "leiauteNFe_v4.00.xsd",
+          "Length": 351128,
+          "Sha256": "7d8af488538fe78809088f9c494cb7521ae856982210fd13a25496ccf429c8c1"
+        },
+        {
+          "FileName": "nfe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "66a117aaa78687fdb1355fc32a380ec859f3a98e850d7c4de5a07935eb1a6030"
+        },
+        {
+          "FileName": "procInutNFe_v4.00.xsd",
+          "Length": 588,
+          "Sha256": "c71ce9ed656e22161923d77af47839421fa41c63703a064655880fed76e20334"
+        },
+        {
+          "FileName": "procNFe_v4.00.xsd",
+          "Length": 531,
+          "Sha256": "b7af3072ff7398aa557c42bc6d8198dd3c006b1a6ecaad66bc839a5c34cbcb84"
+        },
+        {
+          "FileName": "retConsReciNFe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "5cc8219feac16f43a21e168ec4cbf8d0dcf8dade5dccf3f07a42f538519129e9"
+        },
+        {
+          "FileName": "retConsSitNFe_v4.00.xsd",
+          "Length": 611,
+          "Sha256": "8b7188d6fe9e879ca057bfb68600746c7491d2e092e3dc5121a6cd5aa79272d5"
+        },
+        {
+          "FileName": "retConsStatServ_v4.00.xsd",
+          "Length": 613,
+          "Sha256": "337ceed7f74c0764edbc8a18feacaf8c33f66aa951c46b4b29b561cda7c2f7fb"
+        },
+        {
+          "FileName": "retEnviNFe_v4.00.xsd",
+          "Length": 626,
+          "Sha256": "d58b700f849ea7df9f1d35580ae0de425dfa1e295408c02609b81905b04ce4ce"
+        },
+        {
+          "FileName": "retInutNFe_v4.00.xsd",
+          "Length": 632,
+          "Sha256": "8b5590f79c157510c5f65a43c7325008c01677ebf24e14eef26e4817ea2673a1"
+        },
+        {
+          "FileName": "tiposBasico_v4.00.xsd",
+          "Length": 21988,
+          "Sha256": "63d393d69fb63568e39277d9794348fbe107e1c15d2dbce32fb63b6e41472c6d"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=sjdK/JDjQs8=",
+      "Text": "Esquema XML NF-e/NFC-e - Pacote de Libera\u00E7\u00E3o n\u00BA 9p (Novo leiaute da NF-e, NT 2024.003 v.1.03) (ZIP). Publicado em 24/02/2025",
+      "PublishedAt": "2025-02-24T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:49.5129273+00:00",
+      "Files": [
+        {
+          "FileName": "retConsSitNFe_v4.00.xsd",
+          "Length": 611,
+          "Sha256": "8b7188d6fe9e879ca057bfb68600746c7491d2e092e3dc5121a6cd5aa79272d5"
+        },
+        {
+          "FileName": "retConsReciNFe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "5cc8219feac16f43a21e168ec4cbf8d0dcf8dade5dccf3f07a42f538519129e9"
+        },
+        {
+          "FileName": "leiauteInutNFe_v4.00.xsd",
+          "Length": 7994,
+          "Sha256": "fd501253ebc1400ef8a753f6ff8dffbf4f5bd07461f1d789c38839c26d26928c"
+        },
+        {
+          "FileName": "retEnviNFe_v4.00.xsd",
+          "Length": 626,
+          "Sha256": "d58b700f849ea7df9f1d35580ae0de425dfa1e295408c02609b81905b04ce4ce"
+        },
+        {
+          "FileName": "consSitNFe_v4.00.xsd",
+          "Length": 577,
+          "Sha256": "44d816a725553a0c53508be919629c9235b42c5d41c358a05be8fdf61945f5c1"
+        },
+        {
+          "FileName": "retInutNFe_v4.00.xsd",
+          "Length": 632,
+          "Sha256": "8b5590f79c157510c5f65a43c7325008c01677ebf24e14eef26e4817ea2673a1"
+        },
+        {
+          "FileName": "consStatServ_v4.00.xsd",
+          "Length": 604,
+          "Sha256": "20c2cae522ac79ea52353ca66d7595c6616a46a491e561b076145fe8574b8773"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        },
+        {
+          "FileName": "consReciNFe_v4.00.xsd",
+          "Length": 619,
+          "Sha256": "0520356a8ac619c8730f793ed2a955418ce5a138b6811f3a6f2c0e72017002c5"
+        },
+        {
+          "FileName": "inutNFe_v4.00.xsd",
+          "Length": 615,
+          "Sha256": "d50dd40f010634d8576ad880552a3d186bd4cfe0a4b554f3097dae2cc5c6a59e"
+        },
+        {
+          "FileName": "retConsStatServ_v4.00.xsd",
+          "Length": 613,
+          "Sha256": "337ceed7f74c0764edbc8a18feacaf8c33f66aa951c46b4b29b561cda7c2f7fb"
+        },
+        {
+          "FileName": "leiauteConsStatServ_v4.00.xsd",
+          "Length": 4000,
+          "Sha256": "cdc0813b5bf0087c7c8510f6ea0c2a367c829d9ea4b44c23533d18d3bcf23375"
+        },
+        {
+          "FileName": "leiauteConsSitNFe_v4.00.xsd",
+          "Length": 20502,
+          "Sha256": "e74e697bc033d8eec01ff75487eb649598250dd7715f6d120eec817fb2506e8e"
+        },
+        {
+          "FileName": "enviNFe_v4.00.xsd",
+          "Length": 609,
+          "Sha256": "9ba17a12e3fd6e153bd8676450526ba3bcfc15b75ecb372823826ee827b8c3ef"
+        },
+        {
+          "FileName": "procInutNFe_v4.00.xsd",
+          "Length": 588,
+          "Sha256": "c71ce9ed656e22161923d77af47839421fa41c63703a064655880fed76e20334"
+        },
+        {
+          "FileName": "procNFe_v4.00.xsd",
+          "Length": 531,
+          "Sha256": "b7af3072ff7398aa557c42bc6d8198dd3c006b1a6ecaad66bc839a5c34cbcb84"
+        },
+        {
+          "FileName": "leiauteNFe_v4.00.xsd",
+          "Length": 351128,
+          "Sha256": "7d8af488538fe78809088f9c494cb7521ae856982210fd13a25496ccf429c8c1"
+        },
+        {
+          "FileName": "tiposBasico_v4.00.xsd",
+          "Length": 21988,
+          "Sha256": "63d393d69fb63568e39277d9794348fbe107e1c15d2dbce32fb63b6e41472c6d"
+        },
+        {
+          "FileName": "nfe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "66a117aaa78687fdb1355fc32a380ec859f3a98e850d7c4de5a07935eb1a6030"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=WJZMmPlQAE4=",
+      "Text": "Esquema XML NF-e/NFC-e - Pacote de Libera\u00E7\u00E3o n\u00BA 010a (Novo leiaute da NF-e, NT 2025.002 v.1.01) (ZIP). Publicado em 15/04/2025",
+      "PublishedAt": "2025-04-15T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:49.6906123+00:00",
+      "Files": [
+        {
+          "FileName": "DFeTiposBasicos_v1.00.xsd",
+          "Length": 54264,
+          "Sha256": "80815b1db037a5f284073c66889401b99149543e053589677217f7df5d3f707a"
+        },
+        {
+          "FileName": "leiauteNFe_v4.00.xsd",
+          "Length": 351128,
+          "Sha256": "7d8af488538fe78809088f9c494cb7521ae856982210fd13a25496ccf429c8c1"
+        },
+        {
+          "FileName": "nfe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "66a117aaa78687fdb1355fc32a380ec859f3a98e850d7c4de5a07935eb1a6030"
+        },
+        {
+          "FileName": "tiposBasico_v4.00.xsd",
+          "Length": 21988,
+          "Sha256": "63d393d69fb63568e39277d9794348fbe107e1c15d2dbce32fb63b6e41472c6d"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=G3fIxJUvAD8=",
+      "Text": "Esquemas XML NF-e - Pacote de Libera\u00E7\u00E3o Evento de Averba\u00E7\u00E3o v1.01 (atualizado em 30/04/2025) (ZIP)",
+      "PublishedAt": "2025-04-30T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:49.8691624+00:00",
+      "Files": [
+        {
+          "FileName": "Averb_v1.00.xsd",
+          "Length": 661,
+          "Sha256": "d8c07735204a581a504df512f88de2b0053d8f3febadc3cd7884062e19ea59fd"
+        },
+        {
+          "FileName": "e790700_v1.00.xsd",
+          "Length": 6775,
+          "Sha256": "defac96a3cbb4b2bbf042383281e40ee65151b14b858cb5cab2a8e7715378a4a"
+        },
+        {
+          "FileName": "envAverb_v1.00.xsd",
+          "Length": 589,
+          "Sha256": "1f47cbf61b12b51ffec4ce1d14a1c2205057d2244bd198d581930b6b4c665e24"
+        },
+        {
+          "FileName": "leiauteAverb_v1.00.xsd",
+          "Length": 21839,
+          "Sha256": "ad0046769de4dea04e761cfd6ab2b21bc57540f4fc3c2ddb908e1c0f2d2f47b3"
+        },
+        {
+          "FileName": "procAverbNFe_v1.00.xsd",
+          "Length": 627,
+          "Sha256": "f194b4edd46a9652f358549e440af8cbd6b4c4694341f7adc948ca2edaac44e5"
+        },
+        {
+          "FileName": "retEnvAverb_v1.00.xsd",
+          "Length": 593,
+          "Sha256": "928f9c538bc72acee4b1b0716f34b2b3f790a029691a71ad47f9bcd1b174e40d"
+        },
+        {
+          "FileName": "tiposBasico_v1.03.xsd",
+          "Length": 31233,
+          "Sha256": "f20b13ad50eac1235aac2114fd1a98d89527c4bf895cb4e7a73342eaf53780da"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=0qRvxtvKcj4=",
+      "Text": "Esquema XML NF-e/NFC-e - Pacote de Libera\u00E7\u00E3o n\u00BA 9q (Novo leiaute da NF-e, NT 2025.001 v.1.00) (ZIP). Publicado em 19/05/2025",
+      "PublishedAt": "2025-05-19T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:50.0484393+00:00",
+      "Files": [
+        {
+          "FileName": "consReciNFe_v4.00.xsd",
+          "Length": 619,
+          "Sha256": "0520356a8ac619c8730f793ed2a955418ce5a138b6811f3a6f2c0e72017002c5"
+        },
+        {
+          "FileName": "consSitNFe_v4.00.xsd",
+          "Length": 577,
+          "Sha256": "44d816a725553a0c53508be919629c9235b42c5d41c358a05be8fdf61945f5c1"
+        },
+        {
+          "FileName": "consStatServ_v4.00.xsd",
+          "Length": 604,
+          "Sha256": "20c2cae522ac79ea52353ca66d7595c6616a46a491e561b076145fe8574b8773"
+        },
+        {
+          "FileName": "enviNFe_v4.00.xsd",
+          "Length": 609,
+          "Sha256": "9ba17a12e3fd6e153bd8676450526ba3bcfc15b75ecb372823826ee827b8c3ef"
+        },
+        {
+          "FileName": "inutNFe_v4.00.xsd",
+          "Length": 615,
+          "Sha256": "d50dd40f010634d8576ad880552a3d186bd4cfe0a4b554f3097dae2cc5c6a59e"
+        },
+        {
+          "FileName": "leiauteConsSitNFe_v4.00.xsd",
+          "Length": 20502,
+          "Sha256": "e74e697bc033d8eec01ff75487eb649598250dd7715f6d120eec817fb2506e8e"
+        },
+        {
+          "FileName": "leiauteConsStatServ_v4.00.xsd",
+          "Length": 4000,
+          "Sha256": "cdc0813b5bf0087c7c8510f6ea0c2a367c829d9ea4b44c23533d18d3bcf23375"
+        },
+        {
+          "FileName": "leiauteInutNFe_v4.00.xsd",
+          "Length": 7994,
+          "Sha256": "fd501253ebc1400ef8a753f6ff8dffbf4f5bd07461f1d789c38839c26d26928c"
+        },
+        {
+          "FileName": "leiauteNFe_v4.00.xsd",
+          "Length": 351128,
+          "Sha256": "7d8af488538fe78809088f9c494cb7521ae856982210fd13a25496ccf429c8c1"
+        },
+        {
+          "FileName": "nfe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "66a117aaa78687fdb1355fc32a380ec859f3a98e850d7c4de5a07935eb1a6030"
+        },
+        {
+          "FileName": "procInutNFe_v4.00.xsd",
+          "Length": 588,
+          "Sha256": "c71ce9ed656e22161923d77af47839421fa41c63703a064655880fed76e20334"
+        },
+        {
+          "FileName": "procNFe_v4.00.xsd",
+          "Length": 531,
+          "Sha256": "b7af3072ff7398aa557c42bc6d8198dd3c006b1a6ecaad66bc839a5c34cbcb84"
+        },
+        {
+          "FileName": "retConsReciNFe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "5cc8219feac16f43a21e168ec4cbf8d0dcf8dade5dccf3f07a42f538519129e9"
+        },
+        {
+          "FileName": "retConsSitNFe_v4.00.xsd",
+          "Length": 611,
+          "Sha256": "8b7188d6fe9e879ca057bfb68600746c7491d2e092e3dc5121a6cd5aa79272d5"
+        },
+        {
+          "FileName": "retConsStatServ_v4.00.xsd",
+          "Length": 613,
+          "Sha256": "337ceed7f74c0764edbc8a18feacaf8c33f66aa951c46b4b29b561cda7c2f7fb"
+        },
+        {
+          "FileName": "retEnviNFe_v4.00.xsd",
+          "Length": 626,
+          "Sha256": "d58b700f849ea7df9f1d35580ae0de425dfa1e295408c02609b81905b04ce4ce"
+        },
+        {
+          "FileName": "retInutNFe_v4.00.xsd",
+          "Length": 632,
+          "Sha256": "8b5590f79c157510c5f65a43c7325008c01677ebf24e14eef26e4817ea2673a1"
+        },
+        {
+          "FileName": "tiposBasico_v4.00.xsd",
+          "Length": 21988,
+          "Sha256": "63d393d69fb63568e39277d9794348fbe107e1c15d2dbce32fb63b6e41472c6d"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=T97MsW48FOM=",
+      "Text": "Esquema XML NF-e/NFC-e - Pacote de Libera\u00E7\u00E3o n\u00BA 010b (Novo leiaute da NF-e, NT 2025.002 v.1.10, NT 2024.003 e NT 2025.001) (ZIP). Publicado em 09/06/2025",
+      "PublishedAt": "2025-06-09T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:50.2321273+00:00",
+      "Files": [
+        {
+          "FileName": "DFeTiposBasicos_v1.00.xsd",
+          "Length": 54264,
+          "Sha256": "80815b1db037a5f284073c66889401b99149543e053589677217f7df5d3f707a"
+        },
+        {
+          "FileName": "leiauteNFe_v4.00.xsd",
+          "Length": 351128,
+          "Sha256": "7d8af488538fe78809088f9c494cb7521ae856982210fd13a25496ccf429c8c1"
+        },
+        {
+          "FileName": "nfe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "66a117aaa78687fdb1355fc32a380ec859f3a98e850d7c4de5a07935eb1a6030"
+        },
+        {
+          "FileName": "tiposBasico_v4.00.xsd",
+          "Length": 21988,
+          "Sha256": "63d393d69fb63568e39277d9794348fbe107e1c15d2dbce32fb63b6e41472c6d"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=R3nupHT9LqA=",
+      "Text": "Esquema XML NF-e/NFC-e - Schema dos eventos da NT 2025.002 v.1.20 - RTC (ZIP). Publicado em 18/08/2025",
+      "PublishedAt": "2025-08-18T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:50.76489+00:00",
+      "Files": [
+        {
+          "FileName": "e110001_v1.00.xsd",
+          "Length": 2924,
+          "Sha256": "8f4911c2e617bf81a473db690733abbec7f1513b76bc563341c01c44a1f8f200"
+        },
+        {
+          "FileName": "e112110_v1.00.xsd",
+          "Length": 2949,
+          "Sha256": "10bf7c0df0038155201ea37d9c12b68b4cbea02867370afa3c4863af729b6016"
+        },
+        {
+          "FileName": "e112120_v1.00 .xsd",
+          "Length": 4516,
+          "Sha256": "27e654b1c7eee2feb4fffa694f0b5ee16618f61f7f849517a714c60cfd1e450c"
+        },
+        {
+          "FileName": "e112130_v1.00.xsd",
+          "Length": 5366,
+          "Sha256": "1c1f5e024bc6fba5d5dc2ea01d49b20d089ec5870dc89bc7f17135610e7ca4e8"
+        },
+        {
+          "FileName": "e112140_v1.00.xsd",
+          "Length": 4534,
+          "Sha256": "ec52646b5d7931dc87a41d6f11c585534d49bdf3d63ded6acbb52dc1b6bb4090"
+        },
+        {
+          "FileName": "e211110_v1.00.xsd",
+          "Length": 5441,
+          "Sha256": "6a547790c59890981a15dfb78c0c50fbaf064aa7ebbd756f26b2238811b41892"
+        },
+        {
+          "FileName": "e211120_v1.00.xsd",
+          "Length": 5215,
+          "Sha256": "56ffbebe2e9c957117c67892c5e3cf8a22dc03c2e8264fde45cae453b3e2b4fd"
+        },
+        {
+          "FileName": "e211124_v1.00.xsd",
+          "Length": 4602,
+          "Sha256": "f3be0304553022bfb44852a023cc1853686f2ba5cb017dfc87dace87dfd85945"
+        },
+        {
+          "FileName": "e211128_v1.00.xsd",
+          "Length": 2944,
+          "Sha256": "57a4df9a386af8b575ea1d5499a9b0b2dcb781169b40c390dfeb239f14605385"
+        },
+        {
+          "FileName": "e211130_v1.00.xsd",
+          "Length": 4286,
+          "Sha256": "9c6086a885c8f32c920437151aa3e6fa14f6f6f56055416805f3392c646fc0dd"
+        },
+        {
+          "FileName": "e211140_v1.00.xsd",
+          "Length": 4429,
+          "Sha256": "1081fbfdc78dbca20be80d9ee8abae094211100e4b5eea12c1b8c861e737619c"
+        },
+        {
+          "FileName": "e211150_v1.00.xsd",
+          "Length": 3709,
+          "Sha256": "de2504594bc3c317adab421c52b8fad35ad6406519b7198bb0d90406a2c6d2b1"
+        },
+        {
+          "FileName": "e212110_v1.00.xsd",
+          "Length": 3038,
+          "Sha256": "e4f76579f2324dccf361bcdfcc551e9ff5f021eefbb5ac8662c28fc12dcfe04a"
+        },
+        {
+          "FileName": "e212120_v1.00.xsd",
+          "Length": 2901,
+          "Sha256": "bacfaf3ee4e5ecf5517e42892f172ebb016203c4198671129612d7f32e0a6ba5"
+        },
+        {
+          "FileName": "e412120_v1.00.xsd",
+          "Length": 3542,
+          "Sha256": "6396c50672e7e93032b82b31a3f8b79e9494faaa65f9a470deaff399d4a91a89"
+        },
+        {
+          "FileName": "e412130_v1.00.xsd",
+          "Length": 3541,
+          "Sha256": "226f883090516d776ce632cb72f7ce4d3e6aa2b47432b21bec05a4bb29f276c8"
+        },
+        {
+          "FileName": "tiposBasico_v1.03.xsd",
+          "Length": 31233,
+          "Sha256": "f20b13ad50eac1235aac2114fd1a98d89527c4bf895cb4e7a73342eaf53780da"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=lM8atKSxb90=",
+      "Text": "Esquema XML NF-e/NFC-e - Pacote de Libera\u00E7\u00E3o n\u00BA 010b (Novo leiaute da NF-e, NT 2025.002 v.1.20, NT 2024.003 e NT 2025.001) (ZIP). Publicado em 20/08/2025",
+      "PublishedAt": "2025-08-20T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:50.9621334+00:00",
+      "Files": [
+        {
+          "FileName": "DFeTiposBasicos_v1.00.xsd",
+          "Length": 54264,
+          "Sha256": "80815b1db037a5f284073c66889401b99149543e053589677217f7df5d3f707a"
+        },
+        {
+          "FileName": "leiauteNFe_v4.00.xsd",
+          "Length": 351128,
+          "Sha256": "7d8af488538fe78809088f9c494cb7521ae856982210fd13a25496ccf429c8c1"
+        },
+        {
+          "FileName": "nfe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "66a117aaa78687fdb1355fc32a380ec859f3a98e850d7c4de5a07935eb1a6030"
+        },
+        {
+          "FileName": "tiposBasico_v4.00.xsd",
+          "Length": 21988,
+          "Sha256": "63d393d69fb63568e39277d9794348fbe107e1c15d2dbce32fb63b6e41472c6d"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=sPbb0HbIv6E=",
+      "Text": "Schemas XML NFAg - Pacote de Libera\u00E7\u00E3o 1.00 (ZIP) - (Publicado em 16/09/2025)",
+      "PublishedAt": "2025-09-16T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:51.1488749+00:00",
+      "Files": [
+        {
+          "FileName": "consSitNFAgTiposBasico_v1.00.xsd",
+          "Length": 4345,
+          "Sha256": "92d740df68ffef80e384c03520f60b5b8c141cae1ac29babcc5ca83f44d5f23b"
+        },
+        {
+          "FileName": "consSitNFAg_v1.00.xsd",
+          "Length": 674,
+          "Sha256": "cd69295ec39bef05170331d692ea38cc53b8bd41da2105bdc8c19d3e23cc9273"
+        },
+        {
+          "FileName": "consStatServNFAgTiposBasico_v1.00.xsd",
+          "Length": 4139,
+          "Sha256": "a4cd3ce3f05af97562244bd63f550fcd13079c0f9ce0a99179d47d6dc1b70c98"
+        },
+        {
+          "FileName": "consStatServNFAg_v1.00.xsd",
+          "Length": 729,
+          "Sha256": "5f39d8da5e96dd910c9687cd51cd48abd0eb31270fadb8142bd3d9dca26cbd34"
+        },
+        {
+          "FileName": "DFeTiposBasicos_v1.00.xsd",
+          "Length": 54264,
+          "Sha256": "80815b1db037a5f284073c66889401b99149543e053589677217f7df5d3f707a"
+        },
+        {
+          "FileName": "evCancNFAg_v1.00.xsd",
+          "Length": 1521,
+          "Sha256": "cd0a139c5b6e1c9e19507c74c6e96d5a16b02ea5074630fb1187e64970ebb101"
+        },
+        {
+          "FileName": "eventoNFAgTiposBasico_v1.00.xsd",
+          "Length": 10183,
+          "Sha256": "40312e28d462b9858acb12f6b21f465219c485e3889920a01702bc0012be7921"
+        },
+        {
+          "FileName": "eventoNFAg_v1.00.xsd",
+          "Length": 596,
+          "Sha256": "d80962f4b41a4baeed3f4261554e34ce1bc882bf01ad3320680c5014698eaf4a"
+        },
+        {
+          "FileName": "nfagTiposBasico_v1.00.xsd",
+          "Length": 106272,
+          "Sha256": "f01ce1e99e88c5babb8bd37c45d4106613cf957a049f13f38b8eaf8caa4c87cf"
+        },
+        {
+          "FileName": "nfag_v1.00.xsd",
+          "Length": 654,
+          "Sha256": "774cb24e7cac17ff96994e0f36f2da2c26f6dc7d6d0595ba9c37878911e9c4d1"
+        },
+        {
+          "FileName": "procEventoNFAg_v1.00.xsd",
+          "Length": 771,
+          "Sha256": "09617375f404c084082f98aa9fdbcf18bfd187a3a2459b310c92d52e649846a5"
+        },
+        {
+          "FileName": "procNFAg_v1.00.xsd",
+          "Length": 1676,
+          "Sha256": "04ca48ff5919d68fce5c31a6f5d590c941de281cd6d6c5190b6e3c85f02c9e1b"
+        },
+        {
+          "FileName": "retConsSitNFAg_v1.00.xsd",
+          "Length": 806,
+          "Sha256": "f41a8d1bbe9f450176cb93503fc584804842f588b59387c95751e192ddeeba07"
+        },
+        {
+          "FileName": "retConsStatServNFAg_v1.00.xsd",
+          "Length": 741,
+          "Sha256": "2c96b0d0d1a95f907713352eab04a0980690dcd5fbf799f612005f3e34272f87"
+        },
+        {
+          "FileName": "retEventoNFAg_v1.00.xsd",
+          "Length": 704,
+          "Sha256": "82f18a336cecef9e472beec7aec091760421e191bb4205367d534fab558c97df"
+        },
+        {
+          "FileName": "retNFAg_v1.00.xsd",
+          "Length": 673,
+          "Sha256": "ccb906b5814c42aae6329ecb04d3d7c808b0aef9869f2f26a4100e7ad5d51337"
+        },
+        {
+          "FileName": "tiposGeralNFAg_v1.00.xsd",
+          "Length": 27126,
+          "Sha256": "805b84f4de35cfadefa3d29cd72ae685769dc30385f87dbdb44266f96ec85e06"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=zaSePUxCMcs=",
+      "Text": "Esquema XML NF-e/NFC-e - Pacote de Libera\u00E7\u00E3o n\u00BA 010b (Novo leiaute da NF-e, NT 2025.002 v.1.30, NT 2024.003 e NT 2025.001) (ZIP). Publicado em 07/10/2025",
+      "PublishedAt": "2025-10-07T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:51.6826737+00:00",
+      "Files": [
+        {
+          "FileName": "DFeTiposBasicos_v1.00.xsd",
+          "Length": 54264,
+          "Sha256": "80815b1db037a5f284073c66889401b99149543e053589677217f7df5d3f707a"
+        },
+        {
+          "FileName": "leiauteNFe_v4.00.xsd",
+          "Length": 351128,
+          "Sha256": "7d8af488538fe78809088f9c494cb7521ae856982210fd13a25496ccf429c8c1"
+        },
+        {
+          "FileName": "nfe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "66a117aaa78687fdb1355fc32a380ec859f3a98e850d7c4de5a07935eb1a6030"
+        },
+        {
+          "FileName": "tiposBasico_v4.00.xsd",
+          "Length": 21988,
+          "Sha256": "63d393d69fb63568e39277d9794348fbe107e1c15d2dbce32fb63b6e41472c6d"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=OrXIz5ucPUE=",
+      "Text": "Schemas XML NFAg - Pacote de Libera\u00E7\u00E3o 1.00b (ZIP) - (Publicado em 28/10/2025)",
+      "PublishedAt": "2025-10-28T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:51.8616106+00:00",
+      "Files": [
+        {
+          "FileName": "consSitNFAgTiposBasico_v1.00.xsd",
+          "Length": 4345,
+          "Sha256": "92d740df68ffef80e384c03520f60b5b8c141cae1ac29babcc5ca83f44d5f23b"
+        },
+        {
+          "FileName": "consSitNFAg_v1.00.xsd",
+          "Length": 674,
+          "Sha256": "cd69295ec39bef05170331d692ea38cc53b8bd41da2105bdc8c19d3e23cc9273"
+        },
+        {
+          "FileName": "consStatServNFAgTiposBasico_v1.00.xsd",
+          "Length": 4139,
+          "Sha256": "a4cd3ce3f05af97562244bd63f550fcd13079c0f9ce0a99179d47d6dc1b70c98"
+        },
+        {
+          "FileName": "consStatServNFAg_v1.00.xsd",
+          "Length": 729,
+          "Sha256": "5f39d8da5e96dd910c9687cd51cd48abd0eb31270fadb8142bd3d9dca26cbd34"
+        },
+        {
+          "FileName": "DFeTiposBasicos_v1.00.xsd",
+          "Length": 54264,
+          "Sha256": "80815b1db037a5f284073c66889401b99149543e053589677217f7df5d3f707a"
+        },
+        {
+          "FileName": "evCancNFAg_v1.00.xsd",
+          "Length": 1521,
+          "Sha256": "cd0a139c5b6e1c9e19507c74c6e96d5a16b02ea5074630fb1187e64970ebb101"
+        },
+        {
+          "FileName": "eventoNFAgTiposBasico_v1.00.xsd",
+          "Length": 10183,
+          "Sha256": "40312e28d462b9858acb12f6b21f465219c485e3889920a01702bc0012be7921"
+        },
+        {
+          "FileName": "eventoNFAg_v1.00.xsd",
+          "Length": 596,
+          "Sha256": "d80962f4b41a4baeed3f4261554e34ce1bc882bf01ad3320680c5014698eaf4a"
+        },
+        {
+          "FileName": "nfagTiposBasico_v1.00.xsd",
+          "Length": 106272,
+          "Sha256": "f01ce1e99e88c5babb8bd37c45d4106613cf957a049f13f38b8eaf8caa4c87cf"
+        },
+        {
+          "FileName": "nfag_v1.00.xsd",
+          "Length": 654,
+          "Sha256": "774cb24e7cac17ff96994e0f36f2da2c26f6dc7d6d0595ba9c37878911e9c4d1"
+        },
+        {
+          "FileName": "procEventoNFAg_v1.00.xsd",
+          "Length": 771,
+          "Sha256": "09617375f404c084082f98aa9fdbcf18bfd187a3a2459b310c92d52e649846a5"
+        },
+        {
+          "FileName": "procNFAg_v1.00.xsd",
+          "Length": 1676,
+          "Sha256": "04ca48ff5919d68fce5c31a6f5d590c941de281cd6d6c5190b6e3c85f02c9e1b"
+        },
+        {
+          "FileName": "retConsSitNFAg_v1.00.xsd",
+          "Length": 806,
+          "Sha256": "f41a8d1bbe9f450176cb93503fc584804842f588b59387c95751e192ddeeba07"
+        },
+        {
+          "FileName": "retConsStatServNFAg_v1.00.xsd",
+          "Length": 741,
+          "Sha256": "2c96b0d0d1a95f907713352eab04a0980690dcd5fbf799f612005f3e34272f87"
+        },
+        {
+          "FileName": "retEventoNFAg_v1.00.xsd",
+          "Length": 704,
+          "Sha256": "82f18a336cecef9e472beec7aec091760421e191bb4205367d534fab558c97df"
+        },
+        {
+          "FileName": "retNFAg_v1.00.xsd",
+          "Length": 673,
+          "Sha256": "ccb906b5814c42aae6329ecb04d3d7c808b0aef9869f2f26a4100e7ad5d51337"
+        },
+        {
+          "FileName": "tiposGeralNFAg_v1.00.xsd",
+          "Length": 27126,
+          "Sha256": "805b84f4de35cfadefa3d29cd72ae685769dc30385f87dbdb44266f96ec85e06"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=iC02P5BPto4=",
+      "Text": "Schemas XML NFAg - Pacote de Libera\u00E7\u00E3o 1.00d (ZIP) - (Publicado em 13/11/2025)",
+      "PublishedAt": "2025-11-13T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:52.3966824+00:00",
+      "Files": [
+        {
+          "FileName": "consSitNFAgTiposBasico_v1.00.xsd",
+          "Length": 4345,
+          "Sha256": "92d740df68ffef80e384c03520f60b5b8c141cae1ac29babcc5ca83f44d5f23b"
+        },
+        {
+          "FileName": "consSitNFAg_v1.00.xsd",
+          "Length": 674,
+          "Sha256": "cd69295ec39bef05170331d692ea38cc53b8bd41da2105bdc8c19d3e23cc9273"
+        },
+        {
+          "FileName": "consStatServNFAgTiposBasico_v1.00.xsd",
+          "Length": 4139,
+          "Sha256": "a4cd3ce3f05af97562244bd63f550fcd13079c0f9ce0a99179d47d6dc1b70c98"
+        },
+        {
+          "FileName": "consStatServNFAg_v1.00.xsd",
+          "Length": 729,
+          "Sha256": "5f39d8da5e96dd910c9687cd51cd48abd0eb31270fadb8142bd3d9dca26cbd34"
+        },
+        {
+          "FileName": "DFeTiposBasicos_v1.00.xsd",
+          "Length": 54264,
+          "Sha256": "80815b1db037a5f284073c66889401b99149543e053589677217f7df5d3f707a"
+        },
+        {
+          "FileName": "evCancNFAg_v1.00.xsd",
+          "Length": 1521,
+          "Sha256": "cd0a139c5b6e1c9e19507c74c6e96d5a16b02ea5074630fb1187e64970ebb101"
+        },
+        {
+          "FileName": "eventoNFAgTiposBasico_v1.00.xsd",
+          "Length": 10183,
+          "Sha256": "40312e28d462b9858acb12f6b21f465219c485e3889920a01702bc0012be7921"
+        },
+        {
+          "FileName": "eventoNFAg_v1.00.xsd",
+          "Length": 596,
+          "Sha256": "d80962f4b41a4baeed3f4261554e34ce1bc882bf01ad3320680c5014698eaf4a"
+        },
+        {
+          "FileName": "nfagTiposBasico_v1.00.xsd",
+          "Length": 106272,
+          "Sha256": "f01ce1e99e88c5babb8bd37c45d4106613cf957a049f13f38b8eaf8caa4c87cf"
+        },
+        {
+          "FileName": "nfag_v1.00.xsd",
+          "Length": 654,
+          "Sha256": "774cb24e7cac17ff96994e0f36f2da2c26f6dc7d6d0595ba9c37878911e9c4d1"
+        },
+        {
+          "FileName": "procEventoNFAg_v1.00.xsd",
+          "Length": 771,
+          "Sha256": "09617375f404c084082f98aa9fdbcf18bfd187a3a2459b310c92d52e649846a5"
+        },
+        {
+          "FileName": "procNFAg_v1.00.xsd",
+          "Length": 1676,
+          "Sha256": "04ca48ff5919d68fce5c31a6f5d590c941de281cd6d6c5190b6e3c85f02c9e1b"
+        },
+        {
+          "FileName": "retConsSitNFAg_v1.00.xsd",
+          "Length": 806,
+          "Sha256": "f41a8d1bbe9f450176cb93503fc584804842f588b59387c95751e192ddeeba07"
+        },
+        {
+          "FileName": "retConsStatServNFAg_v1.00.xsd",
+          "Length": 741,
+          "Sha256": "2c96b0d0d1a95f907713352eab04a0980690dcd5fbf799f612005f3e34272f87"
+        },
+        {
+          "FileName": "retEventoNFAg_v1.00.xsd",
+          "Length": 704,
+          "Sha256": "82f18a336cecef9e472beec7aec091760421e191bb4205367d534fab558c97df"
+        },
+        {
+          "FileName": "retNFAg_v1.00.xsd",
+          "Length": 673,
+          "Sha256": "ccb906b5814c42aae6329ecb04d3d7c808b0aef9869f2f26a4100e7ad5d51337"
+        },
+        {
+          "FileName": "tiposGeralNFAg_v1.00.xsd",
+          "Length": 27126,
+          "Sha256": "805b84f4de35cfadefa3d29cd72ae685769dc30385f87dbdb44266f96ec85e06"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=1hp5tlKIJcg=",
+      "Text": "Schemas XML NFGas - Pacote de Libera\u00E7\u00E3o 1.00 (ZIP) - (Publicado em 24/12/2025)",
+      "PublishedAt": "2025-12-24T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:52.5739399+00:00",
+      "Files": [
+        {
+          "FileName": "consSitNFGasTiposBasico_v1.00.xsd",
+          "Length": 4442,
+          "Sha256": "9d78c1d75b63267c41bbd94c37e4f4efb7f84733c3546af0bec7a8a61b9323a0"
+        },
+        {
+          "FileName": "consSitNFGas_v1.00.xsd",
+          "Length": 759,
+          "Sha256": "12a4e01f72e0d41404954cd5c566efc2c0429362ea4aa4c142bb78c75af8279f"
+        },
+        {
+          "FileName": "consStatServNFGasTiposBasico_v1.00.xsd",
+          "Length": 4146,
+          "Sha256": "18845eb3d38ae65e4a1e8ebb92e3b87ffff7a23ff874e15147bdc12d63cdc64e"
+        },
+        {
+          "FileName": "consStatServNFGas_v1.00.xsd",
+          "Length": 734,
+          "Sha256": "a0884d72eddf64886497dfa5d848d02b3ba210a5032ff7ab28a6b0c83ac56239"
+        },
+        {
+          "FileName": "DFeTiposBasicos_v1.00.xsd",
+          "Length": 54264,
+          "Sha256": "80815b1db037a5f284073c66889401b99149543e053589677217f7df5d3f707a"
+        },
+        {
+          "FileName": "evCancNFGas_v1.00.xsd",
+          "Length": 1605,
+          "Sha256": "097a7e40bd1dfe7138bcd9d9f79977bc51e18314cf962053b141d9310242905c"
+        },
+        {
+          "FileName": "eventoNFGasTiposBasico_v1.00.xsd",
+          "Length": 9684,
+          "Sha256": "42455749897a8eb9781dfcf9e7f8ef7c3907cb3ddb5048556277e1b231f07119"
+        },
+        {
+          "FileName": "eventoNFGas_v1.00.xsd",
+          "Length": 601,
+          "Sha256": "3d5e42e63e938bde62abc19a77c9eab127038edd7a024f5f49804028b8bc4f41"
+        },
+        {
+          "FileName": "nfgasTiposBasico_v1.00.xsd",
+          "Length": 145401,
+          "Sha256": "225c8870e44be5d01d011b53103d54610a5963e0a7c5c6feddc6ea8ac1a7036a"
+        },
+        {
+          "FileName": "nfgas_v1.00.xsd",
+          "Length": 659,
+          "Sha256": "8f79b772973bc0561f639055c3bbfc2305df1463c42fa33e808a1f5a2b54ccb1"
+        },
+        {
+          "FileName": "procEventoNFGas_v1.00.xsd",
+          "Length": 697,
+          "Sha256": "7ec578366db6b7fc0556f84844d6c622dcbcf6b5d3f73694cf9fcdbd32d60d9a"
+        },
+        {
+          "FileName": "procNFGas_v1.00.xsd",
+          "Length": 1765,
+          "Sha256": "d11a3504262b3ba34676c4f09f34207cdbe32734b167187d1ef364d0ce175737"
+        },
+        {
+          "FileName": "retConsSitNFGas_v1.00.xsd",
+          "Length": 627,
+          "Sha256": "9e3de4b0ba96c2a84bb88188f02d55e5da07c1de0c59b3fd13b478f5a6ad3b6b"
+        },
+        {
+          "FileName": "retConsStatServNFGas_v1.00.xsd",
+          "Length": 825,
+          "Sha256": "94bf7d3ee5a47ae7cc934e3acfaeff52724bb622e177da83c6e3c1e999d55af9"
+        },
+        {
+          "FileName": "retEventoNFGas_v1.00.xsd",
+          "Length": 709,
+          "Sha256": "4a96a170783aeedb27df9ca52f290647c681ff0fa40caf5c0318d1f5f7869a57"
+        },
+        {
+          "FileName": "retNFGas_v1.00.xsd",
+          "Length": 679,
+          "Sha256": "1587f23a3d51a7faa6bb18a17e0f114ec99d2992ce6d5bfa7fa1b28ad2654d6f"
+        },
+        {
+          "FileName": "tiposGeralNFGas_v1.00.xsd",
+          "Length": 27125,
+          "Sha256": "a1761687728a085fd4cb6d2d19cd733122d0e0e9eba0edbfa35aeb35663f9e53"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=Krpn3jRReeI=",
+      "Text": "Schemas XML NFGas - Pacote de Libera\u00E7\u00E3o 1.00d (ZIP) - (Publicado em 26/01/2026)",
+      "PublishedAt": "2026-01-26T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:52.7561814+00:00",
+      "Files": [
+        {
+          "FileName": "consSitNFGasTiposBasico_v1.00.xsd",
+          "Length": 4442,
+          "Sha256": "9d78c1d75b63267c41bbd94c37e4f4efb7f84733c3546af0bec7a8a61b9323a0"
+        },
+        {
+          "FileName": "consSitNFGas_v1.00.xsd",
+          "Length": 759,
+          "Sha256": "12a4e01f72e0d41404954cd5c566efc2c0429362ea4aa4c142bb78c75af8279f"
+        },
+        {
+          "FileName": "consStatServNFGasTiposBasico_v1.00.xsd",
+          "Length": 4146,
+          "Sha256": "18845eb3d38ae65e4a1e8ebb92e3b87ffff7a23ff874e15147bdc12d63cdc64e"
+        },
+        {
+          "FileName": "consStatServNFGas_v1.00.xsd",
+          "Length": 734,
+          "Sha256": "a0884d72eddf64886497dfa5d848d02b3ba210a5032ff7ab28a6b0c83ac56239"
+        },
+        {
+          "FileName": "DFeTiposBasicos_v1.00.xsd",
+          "Length": 54264,
+          "Sha256": "80815b1db037a5f284073c66889401b99149543e053589677217f7df5d3f707a"
+        },
+        {
+          "FileName": "evCancNFGas_v1.00.xsd",
+          "Length": 1605,
+          "Sha256": "097a7e40bd1dfe7138bcd9d9f79977bc51e18314cf962053b141d9310242905c"
+        },
+        {
+          "FileName": "eventoNFGasTiposBasico_v1.00.xsd",
+          "Length": 9684,
+          "Sha256": "42455749897a8eb9781dfcf9e7f8ef7c3907cb3ddb5048556277e1b231f07119"
+        },
+        {
+          "FileName": "eventoNFGas_v1.00.xsd",
+          "Length": 601,
+          "Sha256": "3d5e42e63e938bde62abc19a77c9eab127038edd7a024f5f49804028b8bc4f41"
+        },
+        {
+          "FileName": "nfgasTiposBasico_v1.00.xsd",
+          "Length": 145401,
+          "Sha256": "225c8870e44be5d01d011b53103d54610a5963e0a7c5c6feddc6ea8ac1a7036a"
+        },
+        {
+          "FileName": "nfgas_v1.00.xsd",
+          "Length": 659,
+          "Sha256": "8f79b772973bc0561f639055c3bbfc2305df1463c42fa33e808a1f5a2b54ccb1"
+        },
+        {
+          "FileName": "procEventoNFGas_v1.00.xsd",
+          "Length": 697,
+          "Sha256": "7ec578366db6b7fc0556f84844d6c622dcbcf6b5d3f73694cf9fcdbd32d60d9a"
+        },
+        {
+          "FileName": "procNFGas_v1.00.xsd",
+          "Length": 1765,
+          "Sha256": "d11a3504262b3ba34676c4f09f34207cdbe32734b167187d1ef364d0ce175737"
+        },
+        {
+          "FileName": "retConsSitNFGas_v1.00.xsd",
+          "Length": 627,
+          "Sha256": "9e3de4b0ba96c2a84bb88188f02d55e5da07c1de0c59b3fd13b478f5a6ad3b6b"
+        },
+        {
+          "FileName": "retConsStatServNFGas_v1.00.xsd",
+          "Length": 825,
+          "Sha256": "94bf7d3ee5a47ae7cc934e3acfaeff52724bb622e177da83c6e3c1e999d55af9"
+        },
+        {
+          "FileName": "retEventoNFGas_v1.00.xsd",
+          "Length": 709,
+          "Sha256": "4a96a170783aeedb27df9ca52f290647c681ff0fa40caf5c0318d1f5f7869a57"
+        },
+        {
+          "FileName": "retNFGas_v1.00.xsd",
+          "Length": 679,
+          "Sha256": "1587f23a3d51a7faa6bb18a17e0f114ec99d2992ce6d5bfa7fa1b28ad2654d6f"
+        },
+        {
+          "FileName": "tiposGeralNFGas_v1.00.xsd",
+          "Length": 27125,
+          "Sha256": "a1761687728a085fd4cb6d2d19cd733122d0e0e9eba0edbfa35aeb35663f9e53"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=8chO69DQYZ8=",
+      "Text": "Esquema XML NF-e/NFC-e - Pacote de Libera\u00E7\u00E3o n\u00BA 010c (NT 2022.002 v.1.30) (ZIP) - (Publicado em 26/03/2026)",
+      "PublishedAt": "2026-03-26T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:52.9962593+00:00",
+      "Files": [
+        {
+          "FileName": "DFeTiposBasicos_v1.00.xsd",
+          "Length": 54264,
+          "Sha256": "80815b1db037a5f284073c66889401b99149543e053589677217f7df5d3f707a"
+        },
+        {
+          "FileName": "leiauteNFe_v4.00.xsd",
+          "Length": 351128,
+          "Sha256": "7d8af488538fe78809088f9c494cb7521ae856982210fd13a25496ccf429c8c1"
+        },
+        {
+          "FileName": "nfe_v4.00.xsd",
+          "Length": 637,
+          "Sha256": "66a117aaa78687fdb1355fc32a380ec859f3a98e850d7c4de5a07935eb1a6030"
+        },
+        {
+          "FileName": "tiposBasico_v4.00.xsd",
+          "Length": 21988,
+          "Sha256": "63d393d69fb63568e39277d9794348fbe107e1c15d2dbce32fb63b6e41472c6d"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=bxhlRXyeAIg=",
+      "Text": "Schemas XML NFGas - Pacote de Libera\u00E7\u00E3o 1.00e (ZIP) - (Publicado em 07/04/2026)",
+      "PublishedAt": "2026-04-07T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:53.1752014+00:00",
+      "Files": [
+        {
+          "FileName": "consSitNFGasTiposBasico_v1.00.xsd",
+          "Length": 4442,
+          "Sha256": "9d78c1d75b63267c41bbd94c37e4f4efb7f84733c3546af0bec7a8a61b9323a0"
+        },
+        {
+          "FileName": "consSitNFGas_v1.00.xsd",
+          "Length": 759,
+          "Sha256": "12a4e01f72e0d41404954cd5c566efc2c0429362ea4aa4c142bb78c75af8279f"
+        },
+        {
+          "FileName": "consStatServNFGasTiposBasico_v1.00.xsd",
+          "Length": 4146,
+          "Sha256": "18845eb3d38ae65e4a1e8ebb92e3b87ffff7a23ff874e15147bdc12d63cdc64e"
+        },
+        {
+          "FileName": "consStatServNFGas_v1.00.xsd",
+          "Length": 734,
+          "Sha256": "a0884d72eddf64886497dfa5d848d02b3ba210a5032ff7ab28a6b0c83ac56239"
+        },
+        {
+          "FileName": "DFeTiposBasicos_v1.00.xsd",
+          "Length": 54264,
+          "Sha256": "80815b1db037a5f284073c66889401b99149543e053589677217f7df5d3f707a"
+        },
+        {
+          "FileName": "evCancNFGas_v1.00.xsd",
+          "Length": 1605,
+          "Sha256": "097a7e40bd1dfe7138bcd9d9f79977bc51e18314cf962053b141d9310242905c"
+        },
+        {
+          "FileName": "eventoNFGasTiposBasico_v1.00.xsd",
+          "Length": 9684,
+          "Sha256": "42455749897a8eb9781dfcf9e7f8ef7c3907cb3ddb5048556277e1b231f07119"
+        },
+        {
+          "FileName": "eventoNFGas_v1.00.xsd",
+          "Length": 601,
+          "Sha256": "3d5e42e63e938bde62abc19a77c9eab127038edd7a024f5f49804028b8bc4f41"
+        },
+        {
+          "FileName": "nfgasTiposBasico_v1.00.xsd",
+          "Length": 145401,
+          "Sha256": "225c8870e44be5d01d011b53103d54610a5963e0a7c5c6feddc6ea8ac1a7036a"
+        },
+        {
+          "FileName": "nfgas_v1.00.xsd",
+          "Length": 659,
+          "Sha256": "8f79b772973bc0561f639055c3bbfc2305df1463c42fa33e808a1f5a2b54ccb1"
+        },
+        {
+          "FileName": "procEventoNFGas_v1.00.xsd",
+          "Length": 697,
+          "Sha256": "7ec578366db6b7fc0556f84844d6c622dcbcf6b5d3f73694cf9fcdbd32d60d9a"
+        },
+        {
+          "FileName": "procNFGas_v1.00.xsd",
+          "Length": 1765,
+          "Sha256": "d11a3504262b3ba34676c4f09f34207cdbe32734b167187d1ef364d0ce175737"
+        },
+        {
+          "FileName": "retConsSitNFGas_v1.00.xsd",
+          "Length": 627,
+          "Sha256": "9e3de4b0ba96c2a84bb88188f02d55e5da07c1de0c59b3fd13b478f5a6ad3b6b"
+        },
+        {
+          "FileName": "retConsStatServNFGas_v1.00.xsd",
+          "Length": 825,
+          "Sha256": "94bf7d3ee5a47ae7cc934e3acfaeff52724bb622e177da83c6e3c1e999d55af9"
+        },
+        {
+          "FileName": "retEventoNFGas_v1.00.xsd",
+          "Length": 709,
+          "Sha256": "4a96a170783aeedb27df9ca52f290647c681ff0fa40caf5c0318d1f5f7869a57"
+        },
+        {
+          "FileName": "retNFGas_v1.00.xsd",
+          "Length": 679,
+          "Sha256": "1587f23a3d51a7faa6bb18a17e0f114ec99d2992ce6d5bfa7fa1b28ad2654d6f"
+        },
+        {
+          "FileName": "tiposGeralNFGas_v1.00.xsd",
+          "Length": 27125,
+          "Sha256": "a1761687728a085fd4cb6d2d19cd733122d0e0e9eba0edbfa35aeb35663f9e53"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        }
+      ]
+    },
+    {
+      "Url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=LSpnh5/ONI8=",
+      "Text": "Schemas XML NFAg - Pacote de Libera\u00E7\u00E3o 1.00j (ZIP) - (Publicado em 07/04/2026)",
+      "PublishedAt": "2026-04-07T00:00:00",
+      "ProcessedAt": "2026-06-22T19:49:53.3682667+00:00",
+      "Files": [
+        {
+          "FileName": "consSitNFAgTiposBasico_v1.00.xsd",
+          "Length": 4345,
+          "Sha256": "92d740df68ffef80e384c03520f60b5b8c141cae1ac29babcc5ca83f44d5f23b"
+        },
+        {
+          "FileName": "consSitNFAg_v1.00.xsd",
+          "Length": 674,
+          "Sha256": "cd69295ec39bef05170331d692ea38cc53b8bd41da2105bdc8c19d3e23cc9273"
+        },
+        {
+          "FileName": "consStatServNFAgTiposBasico_v1.00.xsd",
+          "Length": 4139,
+          "Sha256": "a4cd3ce3f05af97562244bd63f550fcd13079c0f9ce0a99179d47d6dc1b70c98"
+        },
+        {
+          "FileName": "consStatServNFAg_v1.00.xsd",
+          "Length": 729,
+          "Sha256": "5f39d8da5e96dd910c9687cd51cd48abd0eb31270fadb8142bd3d9dca26cbd34"
+        },
+        {
+          "FileName": "DFeTiposBasicos_v1.00.xsd",
+          "Length": 54264,
+          "Sha256": "80815b1db037a5f284073c66889401b99149543e053589677217f7df5d3f707a"
+        },
+        {
+          "FileName": "evCancNFAg_v1.00.xsd",
+          "Length": 1521,
+          "Sha256": "cd0a139c5b6e1c9e19507c74c6e96d5a16b02ea5074630fb1187e64970ebb101"
+        },
+        {
+          "FileName": "eventoNFAgTiposBasico_v1.00.xsd",
+          "Length": 10183,
+          "Sha256": "40312e28d462b9858acb12f6b21f465219c485e3889920a01702bc0012be7921"
+        },
+        {
+          "FileName": "eventoNFAg_v1.00.xsd",
+          "Length": 596,
+          "Sha256": "d80962f4b41a4baeed3f4261554e34ce1bc882bf01ad3320680c5014698eaf4a"
+        },
+        {
+          "FileName": "nfagTiposBasico_v1.00.xsd",
+          "Length": 106272,
+          "Sha256": "f01ce1e99e88c5babb8bd37c45d4106613cf957a049f13f38b8eaf8caa4c87cf"
+        },
+        {
+          "FileName": "nfag_v1.00.xsd",
+          "Length": 654,
+          "Sha256": "774cb24e7cac17ff96994e0f36f2da2c26f6dc7d6d0595ba9c37878911e9c4d1"
+        },
+        {
+          "FileName": "procEventoNFAg_v1.00.xsd",
+          "Length": 771,
+          "Sha256": "09617375f404c084082f98aa9fdbcf18bfd187a3a2459b310c92d52e649846a5"
+        },
+        {
+          "FileName": "procNFAg_v1.00.xsd",
+          "Length": 1676,
+          "Sha256": "04ca48ff5919d68fce5c31a6f5d590c941de281cd6d6c5190b6e3c85f02c9e1b"
+        },
+        {
+          "FileName": "retConsSitNFAg_v1.00.xsd",
+          "Length": 806,
+          "Sha256": "f41a8d1bbe9f450176cb93503fc584804842f588b59387c95751e192ddeeba07"
+        },
+        {
+          "FileName": "retConsStatServNFAg_v1.00.xsd",
+          "Length": 741,
+          "Sha256": "2c96b0d0d1a95f907713352eab04a0980690dcd5fbf799f612005f3e34272f87"
+        },
+        {
+          "FileName": "retEventoNFAg_v1.00.xsd",
+          "Length": 704,
+          "Sha256": "82f18a336cecef9e472beec7aec091760421e191bb4205367d534fab558c97df"
+        },
+        {
+          "FileName": "retNFAg_v1.00.xsd",
+          "Length": 673,
+          "Sha256": "ccb906b5814c42aae6329ecb04d3d7c808b0aef9869f2f26a4100e7ad5d51337"
+        },
+        {
+          "FileName": "tiposGeralNFAg_v1.00.xsd",
+          "Length": 27126,
+          "Sha256": "805b84f4de35cfadefa3d29cd72ae685769dc30385f87dbdb44266f96ec85e06"
+        },
+        {
+          "FileName": "xmldsig-core-schema_v1.01.xsd",
+          "Length": 3749,
+          "Sha256": "8ce2a385b593c85acf09cb03521f9e730dad2b2e6a5d02cc6f5b688ca94ce230"
+        }
+      ]
+    }
+  ]
+}

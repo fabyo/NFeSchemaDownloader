@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>NFeSchemaDownloader</PackageId>
-    <Version>0.2.0</Version>
+    <Version>0.2.1</Version>
     <Authors>Fabyo</Authors>
     <PackageIcon>logo-200.png</PackageIcon>
     <Description>Biblioteca para automação de download dos Schemas XSD da SEFAZ utilizando Playwright.</Description>
