@@ -8,9 +8,9 @@
 [![GitHub stars](https://img.shields.io/github/stars/fabyo/NFeSchemaDownloader)](https://github.com/fabyo/NFeSchemaDownloader)
 [![License](https://img.shields.io/github/license/fabyo/NFeSchemaDownloader)](https://github.com/fabyo/NFeSchemaDownloader)
 
-**NFeSchemaDownloader** é uma biblioteca .NET projetada para resolver a dor de cabeça de manter os arquivos XSD da SEFAZ atualizados nos seus projetos de NF-e/NFC-e.
+**NFeSchemaDownloader** é uma biblioteca .NET projetada para baixar e organizar os Schemas XML (XSD) oficiais e manter atualizados nos seus projetos.
 
-Biblioteca e CLI em .NET para realizar o download automático e a manutenção dos Schemas XML (XSD) oficiais da SEFAZ utilizando Playwright.
+Biblioteca e CLI em .NET utilizando Playwright.
 
 O projeto tem dois formatos de uso:
 
@@ -19,11 +19,11 @@ O projeto tem dois formatos de uso:
 
 ## Por que usar o NFeSchemaDownloader?
 
-Todo sistema que faz emissão ou validação de Documentos Fiscais Eletrônicos (NF-e, NFC-e) precisa manter os arquivos XSD (Schemas XML) atualizados para garantir que o XML gerado está nas regras vigentes da SEFAZ.
+Todo sistema que faz emissão, consultas ou validação de Documentos Fiscais Eletrônicos (NF-e, NFC-e) precisa manter os arquivos XSD (Schemas XML) atualizados para garantir que o XML gerado está nas regras vigentes da SEFAZ.
 
-**O problema:** Tradicionalmente, os desenvolvedores precisam acessar o portal da SEFAZ, procurar manualmente pelas atualizações, procurar e baixar um por um, ficar procurando, etc. Isso é chato, propenso a erros e fácil de esquecer.
+**O problema:** Tradicionalmente, os desenvolvedores precisam acessar o portal da SEFAZ, procurar manualmente pelas atualizações, baixar e procurar dentro de zip um por um etc. Isso é chato, propenso a erros e fácil de esquecer.
 
-**A solução:** Com a nossa biblioteca, você simplesmente instala o pacote e ele faz todo esse trabalho pesado para você! O `NFeSchemaDownloader` usa um navegador headless (Playwright) para lidar de forma transparente com as políticas de acesso e validações do portal, identifica automaticamente as versões oficiais desde 2017 e extrai os novos Schemas direto para a sua pasta `schemas/v4/`. Sem dor de cabeça, sem downloads manuais.
+**A solução:** Com a nossa biblioteca, você simplesmente instala o pacote e ele faz todo esse trabalho para você! O `NFeSchemaDownloader` usa um navegador headless (Playwright) para lidar de forma transparente com as políticas de acesso e validações do portal, identifica automaticamente as versões oficiais desde 2017 e extrai os novos Schemas direto para a sua pasta `schemas/v4/`. Sem dor de cabeça, sem downloads manuais.
 
 ## Recursos
 
