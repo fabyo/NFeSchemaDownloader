@@ -1,6 +1,8 @@
 using System.IO.Compression;
 using System.Net;
+using System.Net.Http.Headers;
 using System.Text;
+using Microsoft.Extensions.Options;
 using Microsoft.Playwright;
 using Moq;
 using Moq.Protected;
@@ -10,6 +12,16 @@ namespace NFeSchemaDownloader.Tests;
 
 public class SchemaDownloaderTests
 {
+    private sealed class ListProgress : IProgress<NFeSchemaSyncProgress>
+    {
+        public List<NFeSchemaSyncProgress> Events { get; } = [];
+
+        public void Report(NFeSchemaSyncProgress value)
+        {
+            Events.Add(value);
+        }
+    }
+
     private static Stream CreateMockZipStream()
     {
         var memoryStream = new MemoryStream();
@@ -31,6 +43,29 @@ public class SchemaDownloaderTests
         }
         memoryStream.Position = 0;
         return memoryStream;
+    }
+
+    private static SchemaDownloader CreateDownloader(
+        HttpMessageHandler handler,
+        string extractionDir,
+        Action<NFeSchemaOptions>? configureOptions = null,
+        IProgress<NFeSchemaSyncProgress>? progress = null)
+    {
+        var schemaOptions = new NFeSchemaOptions
+        {
+            BaseUrl = "https://fake.sefaz.gov.br",
+            ExtractionDirectory = extractionDir,
+            RetryBaseDelay = TimeSpan.Zero
+        };
+        configureOptions?.Invoke(schemaOptions);
+
+        var options = Options.Create(schemaOptions);
+        return new SchemaDownloader(
+            new HttpClient(handler),
+            new SchemaExtractor(options),
+            new SchemaManifestStore(options),
+            options,
+            progress);
     }
 
     [Fact]
@@ -72,7 +107,7 @@ public class SchemaDownloaderTests
 
         // Assert
         Assert.True(Directory.Exists(tempExtractionDir));
-        var files = Directory.GetFiles(tempExtractionDir);
+        var files = Directory.GetFiles(tempExtractionDir, "*.xsd");
         
         Assert.Single(files);
         Assert.EndsWith(".xsd", files[0]);
@@ -81,5 +116,304 @@ public class SchemaDownloaderTests
         // Cleanup
         if (Directory.Exists(tempExtractionDir))
             Directory.Delete(tempExtractionDir, true);
+    }
+
+    [Fact]
+    public async Task DownloadAndExtractAsync_ShouldSkipPackageAlreadyRecordedInManifest_WhenOverwriteIsDisabled()
+    {
+        // Arrange
+        var tempExtractionDir = Path.Combine(Path.GetTempPath(), "schemas_incremental_test_" + Guid.NewGuid());
+        var requestCount = 0;
+
+        var mockHandler = new Mock<HttpMessageHandler>();
+        mockHandler.Protected()
+            .Setup<Task<HttpResponseMessage>>(
+                "SendAsync",
+                ItExpr.IsAny<HttpRequestMessage>(),
+                ItExpr.IsAny<CancellationToken>()
+            )
+            .Callback(() => requestCount++)
+            .ReturnsAsync(() => new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StreamContent(CreateMockZipStream())
+                {
+                    Headers = { ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/zip") }
+                }
+            });
+
+        var options = Options.Create(new NFeSchemaOptions
+        {
+            BaseUrl = "https://fake.sefaz.gov.br",
+            ExtractionDirectory = tempExtractionDir,
+            OverwriteExistingFiles = false
+        });
+
+        var downloader = new SchemaDownloader(
+            new HttpClient(mockHandler.Object),
+            new SchemaExtractor(options),
+            new SchemaManifestStore(options),
+            options);
+
+        var packages = new List<ReleasePackage>
+        {
+            new ReleasePackage
+            {
+                Date = new DateTime(2026, 1, 1),
+                Text = "Pacote Fake 1.00",
+                Url = "https://fake.sefaz.gov.br/download.zip"
+            }
+        };
+
+        try
+        {
+            // Act
+            await downloader.DownloadAndExtractAsync(packages, []);
+            await downloader.DownloadAndExtractAsync(packages, []);
+
+            // Assert
+            Assert.Equal(1, requestCount);
+            Assert.True(File.Exists(Path.Combine(tempExtractionDir, ".nfe-schema-manifest.json")));
+        }
+        finally
+        {
+            if (Directory.Exists(tempExtractionDir))
+            {
+                Directory.Delete(tempExtractionDir, true);
+            }
+        }
+    }
+
+    [Fact]
+    public async Task DownloadAndExtractAsync_ShouldRetryTransientHttpStatus()
+    {
+        // Arrange
+        var tempExtractionDir = Path.Combine(Path.GetTempPath(), "schemas_retry_test_" + Guid.NewGuid());
+        var requestCount = 0;
+
+        var mockHandler = new Mock<HttpMessageHandler>();
+        mockHandler.Protected()
+            .Setup<Task<HttpResponseMessage>>(
+                "SendAsync",
+                ItExpr.IsAny<HttpRequestMessage>(),
+                ItExpr.IsAny<CancellationToken>()
+            )
+            .ReturnsAsync(() =>
+            {
+                requestCount++;
+                if (requestCount == 1)
+                {
+                    return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                }
+
+                return new HttpResponseMessage
+                {
+                    StatusCode = HttpStatusCode.OK,
+                    Content = new StreamContent(CreateMockZipStream())
+                    {
+                        Headers = { ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/zip") }
+                    }
+                };
+            });
+
+        var options = Options.Create(new NFeSchemaOptions
+        {
+            BaseUrl = "https://fake.sefaz.gov.br",
+            ExtractionDirectory = tempExtractionDir,
+            RetryCount = 1,
+            RetryBaseDelay = TimeSpan.Zero
+        });
+
+        var downloader = new SchemaDownloader(
+            new HttpClient(mockHandler.Object),
+            new SchemaExtractor(options),
+            new SchemaManifestStore(options),
+            options);
+
+        var packages = new List<ReleasePackage>
+        {
+            new ReleasePackage
+            {
+                Date = new DateTime(2026, 1, 1),
+                Text = "Pacote Fake 1.00",
+                Url = "https://fake.sefaz.gov.br/download.zip"
+            }
+        };
+
+        try
+        {
+            // Act
+            await downloader.DownloadAndExtractAsync(packages, []);
+
+            // Assert
+            Assert.Equal(2, requestCount);
+            Assert.True(File.Exists(Path.Combine(tempExtractionDir, "leiaute.xsd")));
+        }
+        finally
+        {
+            if (Directory.Exists(tempExtractionDir))
+            {
+                Directory.Delete(tempExtractionDir, true);
+            }
+        }
+    }
+
+    [Fact]
+    public async Task DownloadAndExtractAsync_ShouldAcceptZipFromContentDispositionFileName()
+    {
+        // Arrange
+        var tempExtractionDir = Path.Combine(Path.GetTempPath(), "schemas_content_disposition_test_" + Guid.NewGuid());
+
+        var mockHandler = new Mock<HttpMessageHandler>();
+        mockHandler.Protected()
+            .Setup<Task<HttpResponseMessage>>(
+                "SendAsync",
+                ItExpr.IsAny<HttpRequestMessage>(),
+                ItExpr.IsAny<CancellationToken>()
+            )
+            .ReturnsAsync(new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StreamContent(CreateMockZipStream())
+                {
+                    Headers =
+                    {
+                        ContentType = new MediaTypeHeaderValue("application/download"),
+                        ContentDisposition = new ContentDispositionHeaderValue("attachment")
+                        {
+                            FileName = "schema-package.zip"
+                        }
+                    }
+                }
+            });
+
+        var downloader = CreateDownloader(mockHandler.Object, tempExtractionDir);
+        var packages = new List<ReleasePackage>
+        {
+            new ReleasePackage
+            {
+                Date = new DateTime(2026, 1, 1),
+                Text = "Pacote Fake 1.00",
+                Url = "https://fake.sefaz.gov.br/download"
+            }
+        };
+
+        try
+        {
+            // Act
+            await downloader.DownloadAndExtractAsync(packages, []);
+
+            // Assert
+            Assert.True(File.Exists(Path.Combine(tempExtractionDir, "leiaute.xsd")));
+        }
+        finally
+        {
+            if (Directory.Exists(tempExtractionDir))
+            {
+                Directory.Delete(tempExtractionDir, true);
+            }
+        }
+    }
+
+    [Fact]
+    public async Task DownloadAndExtractAsync_ShouldIgnoreResponseThatDoesNotLookLikeZip()
+    {
+        // Arrange
+        var tempExtractionDir = Path.Combine(Path.GetTempPath(), "schemas_non_zip_test_" + Guid.NewGuid());
+
+        var mockHandler = new Mock<HttpMessageHandler>();
+        mockHandler.Protected()
+            .Setup<Task<HttpResponseMessage>>(
+                "SendAsync",
+                ItExpr.IsAny<HttpRequestMessage>(),
+                ItExpr.IsAny<CancellationToken>()
+            )
+            .ReturnsAsync(new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StringContent("not a zip")
+                {
+                    Headers = { ContentType = new MediaTypeHeaderValue("text/html") }
+                }
+            });
+
+        var downloader = CreateDownloader(mockHandler.Object, tempExtractionDir);
+        var packages = new List<ReleasePackage>
+        {
+            new ReleasePackage
+            {
+                Date = new DateTime(2026, 1, 1),
+                Text = "Pacote Fake 1.00",
+                Url = "https://fake.sefaz.gov.br/download"
+            }
+        };
+
+        try
+        {
+            // Act
+            await downloader.DownloadAndExtractAsync(packages, []);
+
+            // Assert
+            Assert.Empty(Directory.GetFiles(tempExtractionDir, "*.xsd"));
+        }
+        finally
+        {
+            if (Directory.Exists(tempExtractionDir))
+            {
+                Directory.Delete(tempExtractionDir, true);
+            }
+        }
+    }
+
+    [Fact]
+    public async Task DownloadAndExtractAsync_ShouldReportPackageProgress()
+    {
+        // Arrange
+        var tempExtractionDir = Path.Combine(Path.GetTempPath(), "schemas_progress_test_" + Guid.NewGuid());
+        var progress = new ListProgress();
+
+        var mockHandler = new Mock<HttpMessageHandler>();
+        mockHandler.Protected()
+            .Setup<Task<HttpResponseMessage>>(
+                "SendAsync",
+                ItExpr.IsAny<HttpRequestMessage>(),
+                ItExpr.IsAny<CancellationToken>()
+            )
+            .ReturnsAsync(new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StreamContent(CreateMockZipStream())
+                {
+                    Headers = { ContentType = new MediaTypeHeaderValue("application/zip") }
+                }
+            });
+
+        var downloader = CreateDownloader(mockHandler.Object, tempExtractionDir, progress: progress);
+        var packages = new List<ReleasePackage>
+        {
+            new ReleasePackage
+            {
+                Date = new DateTime(2026, 1, 1),
+                Text = "Pacote Fake 1.00",
+                Url = "https://fake.sefaz.gov.br/download.zip"
+            }
+        };
+
+        try
+        {
+            // Act
+            await downloader.DownloadAndExtractAsync(packages, []);
+
+            // Assert
+            Assert.Contains(progress.Events, progressEvent => progressEvent.Kind == NFeSchemaSyncProgressKind.PackageDownloading);
+            Assert.Contains(progress.Events, progressEvent => progressEvent.Kind == NFeSchemaSyncProgressKind.PackageCompleted);
+        }
+        finally
+        {
+            if (Directory.Exists(tempExtractionDir))
+            {
+                Directory.Delete(tempExtractionDir, true);
+            }
+        }
     }
 }

@@ -5,7 +5,7 @@ namespace NFeSchemaDownloader.Tests;
 
 public class SefazScraperTests
 {
-    [Fact]
+    [IntegrationFact]
     [Trait("Category", "Integration")]
     public async Task ScrapeAsync_ShouldReturnPackagesAndCookies_WhenAccessingSefaz()
     {

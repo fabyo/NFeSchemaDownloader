@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NFeSchemaDownloader\NFeSchemaDownloader.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="10.0.0" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -1,23 +1,23 @@
+using Microsoft.Extensions.DependencyInjection;
+
 namespace NFeSchemaDownloader;
 
+/// <summary>
+/// Static facade for running NFe schema synchronization with default services.
+/// </summary>
 public class NFeSchemaManager
 {
-    public static async Task SyncSchemasAsync()
+    /// <summary>
+    /// Synchronizes local XSD schemas with release packages discovered on the SEFAZ portal.
+    /// </summary>
+    /// <param name="cancellationToken">Token used to cancel synchronization cooperatively.</param>
+    public static async Task SyncSchemasAsync(CancellationToken cancellationToken = default)
     {
-        Console.WriteLine("🚀 Iniciando NFeSchemaDownloader...");
+        await using var serviceProvider = new ServiceCollection()
+            .AddNFeSchemaDownloader()
+            .BuildServiceProvider();
 
-        var scraper = new SefazScraper();
-        var (packages, cookies) = await scraper.ScrapeAsync();
-
-        if (packages.Count == 0)
-        {
-            Console.WriteLine("Nenhum pacote encontrado. Encerrando.");
-            return;
-        }
-
-        var downloader = new SchemaDownloader(cookies, "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=BMPFMBoln3w=");
-        await downloader.DownloadAndExtractAsync(packages);
-
-        Console.WriteLine("🏁 Sincronização finalizada.");
+        var syncService = serviceProvider.GetRequiredService<INFeSchemaSyncService>();
+        await syncService.SyncSchemasAsync(cancellationToken);
     }
 }

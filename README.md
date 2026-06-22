@@ -52,6 +52,115 @@ await NFeSchemaManager.SyncSchemasAsync();
 
 > Isso criará automaticamente a pasta `schemas/v4` na raiz de execução e colocará todos os XSDs sempre em sua versão mais atualizada!
 
+Também é possível cancelar a sincronização de forma cooperativa:
+
+```csharp
+using NFeSchemaDownloader;
+
+using var cts = new CancellationTokenSource(TimeSpan.FromMinutes(5));
+await NFeSchemaManager.SyncSchemasAsync(cts.Token);
+```
+
+## Uso com Dependency Injection
+
+Para workers, APIs e aplicações com `IServiceCollection`, registre os serviços com `AddNFeSchemaDownloader`:
+
+```csharp
+using Microsoft.Extensions.DependencyInjection;
+using NFeSchemaDownloader;
+
+var services = new ServiceCollection();
+
+services.AddNFeSchemaDownloader(options =>
+{
+    options.ExtractionDirectory = "schemas/v4";
+    options.MaxDownloadConcurrency = 2;
+    options.HttpTimeout = TimeSpan.FromMinutes(2);
+    options.RetryCount = 3;
+    options.RetryBaseDelay = TimeSpan.FromSeconds(1);
+});
+
+using var serviceProvider = services.BuildServiceProvider();
+var syncService = serviceProvider.GetRequiredService<INFeSchemaSyncService>();
+
+await syncService.SyncSchemasAsync();
+```
+
+Para acompanhar progresso em uma UI, worker ou pipeline, registre `IProgress<NFeSchemaSyncProgress>`:
+
+```csharp
+services.AddSingleton<IProgress<NFeSchemaSyncProgress>>(
+    new Progress<NFeSchemaSyncProgress>(progress =>
+    {
+        Console.WriteLine(progress.Message);
+    }));
+```
+
+### Opções Disponíveis
+
+| Opção | Padrão | Descrição |
+|---|---:|---|
+| `BaseUrl` | Portal SEFAZ NFe | Página usada para descobrir pacotes de schemas. |
+| `ExtractionDirectory` | `schemas/v4` | Diretório onde os XSDs serão extraídos. |
+| `MaxDownloadConcurrency` | `1` | Quantidade máxima de downloads simultâneos. |
+| `HttpTimeout` | `00:02:00` | Timeout usado nos downloads HTTP. |
+| `DryRun` | `false` | Lista pacotes descobertos sem baixar. |
+| `OverwriteExistingFiles` | `true` | Permite sobrescrever XSDs existentes. |
+| `ManifestFileName` | `.nfe-schema-manifest.json` | Arquivo de manifesto incremental. |
+| `RetryCount` | `3` | Número de tentativas extras para falhas HTTP transientes. |
+| `RetryBaseDelay` | `00:00:01` | Delay base do backoff exponencial. |
+
+## Uso do CLI
+
+Execute o projeto CLI diretamente durante desenvolvimento:
+
+```powershell
+dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj -- --output-dir schemas/v4
+```
+
+Exemplos:
+
+```powershell
+dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj -- --dry-run
+dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj -- --output-dir C:\schemas\nfe --concurrency 3
+dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj -- --timeout 120 --retry-count 5 --retry-delay 2
+dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj -- --force
+```
+
+Flags disponíveis:
+
+| Flag | Descrição |
+|---|---|
+| `--output-dir <path>` | Diretório onde os XSDs serão extraídos. |
+| `--timeout <seconds|TimeSpan>` | Timeout HTTP, por exemplo `120` ou `00:02:00`. |
+| `--concurrency <number>` | Máximo de downloads simultâneos. |
+| `--dry-run` | Lista pacotes encontrados sem baixar. |
+| `--force` | Sobrescreve arquivos existentes e reprocessa pacotes. |
+| `--retry-count <number>` | Número de retries para falhas HTTP transientes. |
+| `--retry-delay <seconds|TimeSpan>` | Delay base do backoff exponencial. |
+| `--help` | Mostra ajuda do CLI. |
+
+## Manifesto Incremental
+
+O downloader cria um manifesto local chamado `.nfe-schema-manifest.json` dentro do diretório de extração. Ele registra os pacotes processados e os XSDs extraídos com tamanho e SHA-256.
+
+Quando overwrite está desativado, pacotes já registrados no manifesto são ignorados para evitar downloads redundantes. No CLI, use `--force` quando quiser baixar e sobrescrever novamente.
+
+## Playwright e Testes de Integração
+
+O scraper usa Playwright para abrir o portal da SEFAZ em navegador headless. Em ambientes novos, instale os browsers do Playwright antes de rodar a automação real:
+
+```powershell
+pwsh .\NFeSchemaDownloader\bin\Debug\net10.0\playwright.ps1 install
+```
+
+Os testes de integração que acessam a SEFAZ real ficam desativados por padrão. Para executá-los:
+
+```powershell
+$env:NFESCHEMA_RUN_INTEGRATION_TESTS='true'
+dotnet test --filter Category=Integration
+```
+
 ## Uso Automático no GitHub (CI/CD)
 
 O poder real dessa ferramenta é deixar rodando em nuvem. Se você olhar o código fonte deste repositório, verá que utilizamos o projeto `NFeSchemaDownloader.Cli` em um arquivo `.github/workflows/publish.yml`.
