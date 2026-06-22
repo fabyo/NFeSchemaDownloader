@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="NFeSchemaDownloader.Cli/NFeSchemaDownloader.Cli.csproj" />
+  <Project Path="NFeSchemaDownloader/NFeSchemaDownloader.csproj" />
+</Solution>
