@@ -70,7 +70,8 @@ jobs:
             git push origin HEAD
             
             # Create GitHub Release
-            gh release create v$NEW_VERSION --title "Release v$NEW_VERSION" --notes "Atualização automática dos pacotes XSD da SEFAZ."
+            zip -r schemas.zip schemas/
+            gh release create v$NEW_VERSION schemas.zip --title "Release v$NEW_VERSION" --notes "Atualização automática dos pacotes XSD da SEFAZ."
             
             # Export the new version for the next steps
             echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
