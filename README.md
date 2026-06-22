@@ -19,7 +19,7 @@ Todo sistema que faz emissão ou validação de Documentos Fiscais Eletrônicos 
 
 **O problema:** Tradicionalmente, os desenvolvedores precisam acessar o portal da SEFAZ, procurar manualmente pelas atualizações, procurar e baixar um por um, ficar procurando, etc. Isso é chato, propenso a erros e fácil de esquecer.
 
-**A solução:** Com a nossa biblioteca, você simplesmente instala o pacote e ele faz todo esse trabalho pesado para você! O `NFeSchemaDownloader` usa um navegador headless (Playwright) para burlar proteções básicas, identifica automaticamente as versões oficiais desde 2017 e extrai os novos Schemas direto para a sua pasta `schemas/v4/`. Sem dor de cabeça, sem downloads manuais.
+**A solução:** Com a nossa biblioteca, você simplesmente instala o pacote e ele faz todo esse trabalho pesado para você! O `NFeSchemaDownloader` usa um navegador headless (Playwright) para lidar de forma transparente com as políticas de acesso e validações do portal, identifica automaticamente as versões oficiais desde 2017 e extrai os novos Schemas direto para a sua pasta `schemas/v4/`. Sem dor de cabeça, sem downloads manuais.
 
 ## Recursos
 
