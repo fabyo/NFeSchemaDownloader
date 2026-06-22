@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Playwright" Version="1.60.0" />
-    <None Include="..\..\logo-200.png" Pack="true" PackagePath="\" />
+    <None Include="..\logo-200.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
