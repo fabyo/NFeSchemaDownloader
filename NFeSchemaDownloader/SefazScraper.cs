@@ -34,7 +34,7 @@ public class SefazScraper
         var page = await context.NewPageAsync();
 
         Console.WriteLine($"Navegando para {SEFAZ_URL}...");
-        await page.GotoAsync(SEFAZ_URL, new PageGotoOptions { WaitUntil = WaitUntilState.DOMContentLoaded });
+        await page.GotoAsync(SEFAZ_URL, new PageGotoOptions { WaitUntil = WaitUntilState.DOMContentLoaded, Timeout = 90000 });
 
         Console.WriteLine("--- ✅ Página carregada. Lendo HTML... ---");
         
