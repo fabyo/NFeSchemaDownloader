@@ -87,4 +87,50 @@ public class SchemaExtractorTests
             }
         }
     }
+
+    [Fact]
+    public async Task ExtractXsdFilesAsync_ShouldNotOverwriteExistingFile_WhenValidationFails()
+    {
+        var tempExtractionDir = Path.Combine(Path.GetTempPath(), "schemas_validate_rollback_" + Guid.NewGuid());
+        Directory.CreateDirectory(tempExtractionDir);
+
+        var existingPath = Path.Combine(tempExtractionDir, "schema.xsd");
+        var existingContent = """
+            <?xml version="1.0" encoding="utf-8"?>
+            <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+              <xs:element name="existing" type="xs:string" />
+            </xs:schema>
+            """;
+        await File.WriteAllTextAsync(existingPath, existingContent);
+
+        var options = Options.Create(new NFeSchemaOptions
+        {
+            ExtractionDirectory = tempExtractionDir,
+            ValidateExtractedSchemas = true,
+            OverwriteExistingFiles = true
+        });
+        var extractor = new SchemaExtractor(options);
+
+        try
+        {
+            await using var zipStream = CreateZipWithFile(
+                "schema.xsd",
+                """
+                <?xml version="1.0" encoding="utf-8"?>
+                <not-a-schema />
+                """);
+
+            await Assert.ThrowsAsync<InvalidDataException>(() => extractor.ExtractXsdFilesAsync(zipStream));
+
+            Assert.Equal(existingContent, await File.ReadAllTextAsync(existingPath));
+            Assert.Empty(Directory.GetDirectories(tempExtractionDir, ".nfe-*"));
+        }
+        finally
+        {
+            if (Directory.Exists(tempExtractionDir))
+            {
+                Directory.Delete(tempExtractionDir, true);
+            }
+        }
+    }
 }

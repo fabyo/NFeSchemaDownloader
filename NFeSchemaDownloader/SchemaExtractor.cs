@@ -56,47 +56,129 @@ public sealed class SchemaExtractor : ISchemaExtractor
     {
         var extractedFiles = new List<ExtractedSchemaFile>();
         Directory.CreateDirectory(_extractionDir);
+        var tempExtractionDir = Path.Combine(_extractionDir, ".nfe-extract-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(tempExtractionDir);
 
-        using var archive = new ZipArchive(zipStream, ZipArchiveMode.Read);
-
-        foreach (var entry in archive.Entries)
+        try
         {
-            cancellationToken.ThrowIfCancellationRequested();
+            var pendingFiles = new List<PendingExtractedFile>();
+            using var archive = new ZipArchive(zipStream, ZipArchiveMode.Read);
 
-            if (!entry.FullName.EndsWith(".xsd", StringComparison.OrdinalIgnoreCase))
+            foreach (var entry in archive.Entries)
             {
-                continue;
+                cancellationToken.ThrowIfCancellationRequested();
+
+                if (!entry.FullName.EndsWith(".xsd", StringComparison.OrdinalIgnoreCase))
+                {
+                    continue;
+                }
+
+                var fileName = Path.GetFileName(entry.FullName);
+                var destPath = Path.Combine(_extractionDir, fileName);
+
+                if (!_overwriteExistingFiles && File.Exists(destPath))
+                {
+                    _logger.LogInformation("Skipping existing XSD file {DestinationPath}", destPath);
+                    var existingFile = await CreateFileMetadataAsync(destPath, cancellationToken);
+                    extractedFiles.Add(existingFile);
+                    ReportFile(existingFile, skipped: true);
+                    continue;
+                }
+
+                var tempPath = Path.Combine(tempExtractionDir, fileName);
+                _logger.LogInformation("Extracting XSD file {FileName} to temporary path {TemporaryPath}", fileName, tempPath);
+
+                using var entryStream = entry.Open();
+                var fileMode = _overwriteExistingFiles ? FileMode.Create : FileMode.CreateNew;
+                await using (var outFile = new FileStream(tempPath, fileMode, FileAccess.Write))
+                {
+                    await entryStream.CopyToAsync(outFile, cancellationToken);
+                }
+
+                ValidateSchemaIfEnabled(tempPath);
+                pendingFiles.Add(new PendingExtractedFile(fileName, tempPath, destPath));
             }
 
-            var fileName = Path.GetFileName(entry.FullName);
-            var destPath = Path.Combine(_extractionDir, fileName);
-
-            if (!_overwriteExistingFiles && File.Exists(destPath))
+            var promotedFiles = await PromoteExtractedFilesAsync(pendingFiles, cancellationToken);
+            foreach (var promotedFile in promotedFiles)
             {
-                _logger.LogInformation("Skipping existing XSD file {DestinationPath}", destPath);
-                var existingFile = await CreateFileMetadataAsync(destPath, cancellationToken);
-                extractedFiles.Add(existingFile);
-                ReportFile(existingFile, skipped: true);
-                continue;
+                extractedFiles.Add(promotedFile);
+                ReportFile(promotedFile, skipped: false);
             }
 
-            _logger.LogInformation("Extracting XSD file to {DestinationPath}", destPath);
-
-            using var entryStream = entry.Open();
-            var fileMode = _overwriteExistingFiles ? FileMode.Create : FileMode.CreateNew;
-            await using (var outFile = new FileStream(destPath, fileMode, FileAccess.Write))
-            {
-                await entryStream.CopyToAsync(outFile, cancellationToken);
-            }
-
-            ValidateSchemaIfEnabled(destPath);
-
-            var extractedFile = await CreateFileMetadataAsync(destPath, cancellationToken);
-            extractedFiles.Add(extractedFile);
-            ReportFile(extractedFile, skipped: false);
+            return extractedFiles;
         }
+        finally
+        {
+            if (Directory.Exists(tempExtractionDir))
+            {
+                Directory.Delete(tempExtractionDir, true);
+            }
+        }
+    }
 
-        return extractedFiles;
+    private async Task<IReadOnlyList<ExtractedSchemaFile>> PromoteExtractedFilesAsync(
+        IReadOnlyList<PendingExtractedFile> pendingFiles,
+        CancellationToken cancellationToken)
+    {
+        var promotedFiles = new List<ExtractedSchemaFile>();
+        var movedFiles = new List<PendingExtractedFile>();
+        var backedUpFiles = new List<PendingExtractedFile>();
+        var backupDir = Path.Combine(_extractionDir, ".nfe-backup-" + Guid.NewGuid().ToString("N"));
+
+        try
+        {
+            Directory.CreateDirectory(backupDir);
+
+            foreach (var file in pendingFiles)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+
+                var backupPath = Path.Combine(backupDir, file.FileName);
+                if (File.Exists(file.DestinationPath))
+                {
+                    File.Move(file.DestinationPath, backupPath, overwrite: true);
+                    backedUpFiles.Add(file);
+                }
+
+                File.Move(file.TemporaryPath, file.DestinationPath, overwrite: false);
+                movedFiles.Add(file);
+
+                var promotedFile = await CreateFileMetadataAsync(file.DestinationPath, cancellationToken);
+                promotedFiles.Add(promotedFile);
+                _logger.LogInformation("Promoted extracted XSD file to {DestinationPath}", file.DestinationPath);
+            }
+
+            return promotedFiles;
+        }
+        catch
+        {
+            foreach (var file in movedFiles)
+            {
+                if (File.Exists(file.DestinationPath))
+                {
+                    File.Delete(file.DestinationPath);
+                }
+            }
+
+            foreach (var file in backedUpFiles)
+            {
+                var backupPath = Path.Combine(backupDir, file.FileName);
+                if (File.Exists(backupPath))
+                {
+                    File.Move(backupPath, file.DestinationPath, overwrite: true);
+                }
+            }
+
+            throw;
+        }
+        finally
+        {
+            if (Directory.Exists(backupDir))
+            {
+                Directory.Delete(backupDir, true);
+            }
+        }
     }
 
     private void ValidateSchemaIfEnabled(string path)
@@ -153,4 +235,6 @@ public sealed class SchemaExtractor : ISchemaExtractor
             Sha256 = Convert.ToHexString(hash).ToLowerInvariant()
         };
     }
+
+    private sealed record PendingExtractedFile(string FileName, string TemporaryPath, string DestinationPath);
 }

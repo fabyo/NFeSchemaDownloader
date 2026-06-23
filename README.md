@@ -150,6 +150,10 @@ O downloader cria um manifesto local chamado `.nfe-schema-manifest.json` dentro 
 
 Quando overwrite está desativado, pacotes já registrados no manifesto são ignorados para evitar downloads redundantes. No CLI, use `--force` quando quiser baixar e sobrescrever novamente.
 
+## Extração Transacional
+
+Os XSDs são extraídos primeiro para um diretório temporário dentro da pasta de saída. A biblioteca só promove os arquivos para o destino final depois que a extração e as validações opcionais terminam com sucesso. Se algo falhar no meio do processo, os arquivos finais existentes são preservados.
+
 ## Playwright e Testes de Integração
 
 O scraper usa Playwright para abrir o portal da SEFAZ em navegador headless. Em ambientes novos, instale os browsers do Playwright antes de rodar a automação real:
