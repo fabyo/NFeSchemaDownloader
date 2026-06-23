@@ -41,6 +41,7 @@ namespace NFeSchemaDownloader.Cli
                         options.OverwriteExistingFiles = cliOptions.Force;
                         options.RetryCount = cliOptions.RetryCount;
                         options.RetryBaseDelay = cliOptions.RetryBaseDelay;
+                        options.ValidateExtractedSchemas = cliOptions.ValidateSchemas;
                     })
                     .AddLogging(builder =>
                     {
@@ -116,6 +117,8 @@ namespace NFeSchemaDownloader.Cli
 
         public TimeSpan RetryBaseDelay { get; private init; } = TimeSpan.FromSeconds(1);
 
+        public bool ValidateSchemas { get; private init; }
+
         public static bool TryParse(string[] args, out CliOptions options, out string? errorMessage)
         {
             var outputDirectory = "schemas/v4";
@@ -125,6 +128,7 @@ namespace NFeSchemaDownloader.Cli
             var force = false;
             var retryCount = 3;
             var retryBaseDelay = TimeSpan.FromSeconds(1);
+            var validateSchemas = false;
 
             for (var i = 0; i < args.Length; i++)
             {
@@ -203,6 +207,10 @@ namespace NFeSchemaDownloader.Cli
 
                         break;
 
+                    case "--validate-schemas":
+                        validateSchemas = true;
+                        break;
+
                     default:
                         options = new CliOptions();
                         errorMessage = $"Unknown option: {arg}";
@@ -218,7 +226,8 @@ namespace NFeSchemaDownloader.Cli
                 DryRun = dryRun,
                 Force = force,
                 RetryCount = retryCount,
-                RetryBaseDelay = retryBaseDelay
+                RetryBaseDelay = retryBaseDelay,
+                ValidateSchemas = validateSchemas
             };
             errorMessage = null;
             return true;
@@ -236,6 +245,7 @@ namespace NFeSchemaDownloader.Cli
             Console.WriteLine("  --force                   Overwrite existing XSD files.");
             Console.WriteLine("  --retry-count <number>    Retry count for transient HTTP failures. Default: 3");
             Console.WriteLine("  --retry-delay <value>     Base retry delay as seconds or TimeSpan. Default: 00:00:01");
+            Console.WriteLine("  --validate-schemas        Validate extracted XSD files.");
             Console.WriteLine("  -h, --help                Show this help.");
         }
 

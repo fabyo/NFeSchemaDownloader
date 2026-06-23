@@ -54,4 +54,9 @@ public sealed class NFeSchemaOptions
     /// Gets or sets the base delay used for exponential retry backoff.
     /// </summary>
     public TimeSpan RetryBaseDelay { get; set; } = TimeSpan.FromSeconds(1);
+
+    /// <summary>
+    /// Gets or sets whether extracted XSD files should be validated after extraction.
+    /// </summary>
+    public bool ValidateExtractedSchemas { get; set; }
 }

@@ -1,5 +1,7 @@
 using System.IO.Compression;
 using System.Security.Cryptography;
+using System.Xml;
+using System.Xml.Schema;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
@@ -13,6 +15,7 @@ public sealed class SchemaExtractor : ISchemaExtractor
 {
     private readonly string _extractionDir;
     private readonly bool _overwriteExistingFiles;
+    private readonly bool _validateExtractedSchemas;
     private readonly IProgress<NFeSchemaSyncProgress> _progress;
     private readonly ILogger<SchemaExtractor> _logger;
 
@@ -25,18 +28,25 @@ public sealed class SchemaExtractor : ISchemaExtractor
         IOptions<NFeSchemaOptions> options,
         IProgress<NFeSchemaSyncProgress>? progress = null,
         ILogger<SchemaExtractor>? logger = null)
-        : this(options.Value.ExtractionDirectory, options.Value.OverwriteExistingFiles, progress, logger)
+        : this(
+            options.Value.ExtractionDirectory,
+            options.Value.OverwriteExistingFiles,
+            options.Value.ValidateExtractedSchemas,
+            progress,
+            logger)
     {
     }
 
     internal SchemaExtractor(
         string extractionDir,
         bool overwriteExistingFiles = true,
+        bool validateExtractedSchemas = false,
         IProgress<NFeSchemaSyncProgress>? progress = null,
         ILogger<SchemaExtractor>? logger = null)
     {
         _extractionDir = extractionDir;
         _overwriteExistingFiles = overwriteExistingFiles;
+        _validateExtractedSchemas = validateExtractedSchemas;
         _progress = progress ?? new NullProgress<NFeSchemaSyncProgress>();
         _logger = logger ?? NullLogger<SchemaExtractor>.Instance;
     }
@@ -45,6 +55,8 @@ public sealed class SchemaExtractor : ISchemaExtractor
     public async Task<IReadOnlyList<ExtractedSchemaFile>> ExtractXsdFilesAsync(Stream zipStream, CancellationToken cancellationToken = default)
     {
         var extractedFiles = new List<ExtractedSchemaFile>();
+        Directory.CreateDirectory(_extractionDir);
+
         using var archive = new ZipArchive(zipStream, ZipArchiveMode.Read);
 
         foreach (var entry in archive.Entries)
@@ -77,12 +89,49 @@ public sealed class SchemaExtractor : ISchemaExtractor
                 await entryStream.CopyToAsync(outFile, cancellationToken);
             }
 
+            ValidateSchemaIfEnabled(destPath);
+
             var extractedFile = await CreateFileMetadataAsync(destPath, cancellationToken);
             extractedFiles.Add(extractedFile);
             ReportFile(extractedFile, skipped: false);
         }
 
         return extractedFiles;
+    }
+
+    private void ValidateSchemaIfEnabled(string path)
+    {
+        if (!_validateExtractedSchemas)
+        {
+            return;
+        }
+
+        try
+        {
+            var schemaSet = new XmlSchemaSet();
+            schemaSet.ValidationEventHandler += (_, args) =>
+            {
+                if (args.Severity == XmlSeverityType.Error)
+                {
+                    throw args.Exception ?? new XmlSchemaException(args.Message);
+                }
+
+                _logger.LogWarning("XSD validation warning for {Path}: {Message}", path, args.Message);
+            };
+
+            using var reader = XmlReader.Create(path, new XmlReaderSettings
+            {
+                DtdProcessing = DtdProcessing.Prohibit
+            });
+            schemaSet.Add(null, reader);
+            schemaSet.Compile();
+
+            _logger.LogInformation("Validated extracted XSD file {Path}", path);
+        }
+        catch (Exception ex) when (ex is XmlException or XmlSchemaException)
+        {
+            throw new InvalidDataException($"Extracted XSD file '{path}' is invalid.", ex);
+        }
     }
 
     private void ReportFile(ExtractedSchemaFile file, bool skipped)

@@ -18,6 +18,7 @@ public class ServiceCollectionExtensionsTests
             options.OverwriteExistingFiles = false;
             options.RetryCount = 5;
             options.RetryBaseDelay = TimeSpan.FromMilliseconds(250);
+            options.ValidateExtractedSchemas = true;
         });
 
         using var serviceProvider = services.BuildServiceProvider();
@@ -37,5 +38,6 @@ public class ServiceCollectionExtensionsTests
         Assert.False(options.OverwriteExistingFiles);
         Assert.Equal(5, options.RetryCount);
         Assert.Equal(TimeSpan.FromMilliseconds(250), options.RetryBaseDelay);
+        Assert.True(options.ValidateExtractedSchemas);
     }
 }

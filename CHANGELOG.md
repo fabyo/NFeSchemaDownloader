@@ -7,6 +7,11 @@ e este projeto segue [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Não lançado]
 
+### Adicionado
+- Opção `ValidateExtractedSchemas` para validar arquivos XSD após a extração.
+- Flag de CLI `--validate-schemas` para habilitar validação dos XSDs extraídos.
+- Testes unitários para validação de XSD válido e rejeição de XSD inválido.
+
 ## [0.2.1] - 2026-06-22
 ### Atualizado
 - Schemas XSD atualizados automaticamente.

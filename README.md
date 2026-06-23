@@ -78,6 +78,7 @@ services.AddNFeSchemaDownloader(options =>
     options.HttpTimeout = TimeSpan.FromMinutes(2);
     options.RetryCount = 3;
     options.RetryBaseDelay = TimeSpan.FromSeconds(1);
+    options.ValidateExtractedSchemas = false;
 });
 
 using var serviceProvider = services.BuildServiceProvider();
@@ -109,6 +110,7 @@ services.AddSingleton<IProgress<NFeSchemaSyncProgress>>(
 | `ManifestFileName` | `.nfe-schema-manifest.json` | Arquivo de manifesto incremental. |
 | `RetryCount` | `3` | Número de tentativas extras para falhas HTTP transientes. |
 | `RetryBaseDelay` | `00:00:01` | Delay base do backoff exponencial. |
+| `ValidateExtractedSchemas` | `false` | Valida os arquivos XSD após a extração. |
 
 ## Uso do CLI
 
@@ -125,6 +127,7 @@ dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj --
 dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj -- --output-dir C:\schemas\nfe --concurrency 3
 dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj -- --timeout 120 --retry-count 5 --retry-delay 2
 dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj -- --force
+dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj -- --validate-schemas
 ```
 
 Flags disponíveis:
@@ -138,6 +141,7 @@ Flags disponíveis:
 | `--force` | Sobrescreve arquivos existentes e reprocessa pacotes. |
 | `--retry-count <number>` | Número de retries para falhas HTTP transientes. |
 | `--retry-delay <seconds|TimeSpan>` | Delay base do backoff exponencial. |
+| `--validate-schemas` | Valida os arquivos XSD após a extração. |
 | `--help` | Mostra ajuda do CLI. |
 
 ## Manifesto Incremental
