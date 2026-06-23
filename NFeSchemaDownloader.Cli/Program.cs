@@ -47,13 +47,23 @@ namespace NFeSchemaDownloader.Cli
                     .AddLogging(builder =>
                     {
                         builder.ClearProviders();
-                        builder.AddSimpleConsole(options =>
+                        if (cliOptions.JsonLogs)
                         {
-                            options.SingleLine = true;
-                            options.TimestampFormat = "HH:mm:ss ";
-                        });
+                            builder.AddJsonConsole();
+                        }
+                        else
+                        {
+                            builder.AddSimpleConsole(options =>
+                            {
+                                options.SingleLine = true;
+                                options.TimestampFormat = "HH:mm:ss ";
+                            });
+                        }
                     })
-                    .AddSingleton<IProgress<NFeSchemaSyncProgress>, ConsoleNFeSchemaProgress>()
+                    .AddSingleton<IProgress<NFeSchemaSyncProgress>>(serviceProvider =>
+                        cliOptions.JsonLogs
+                            ? new LoggingNFeSchemaProgress(serviceProvider.GetRequiredService<ILogger<LoggingNFeSchemaProgress>>())
+                            : new ConsoleNFeSchemaProgress())
                     .BuildServiceProvider();
 
                 var syncService = serviceProvider.GetRequiredService<INFeSchemaSyncService>();
@@ -102,6 +112,28 @@ namespace NFeSchemaDownloader.Cli
         }
     }
 
+    internal sealed class LoggingNFeSchemaProgress(ILogger<LoggingNFeSchemaProgress> logger) : IProgress<NFeSchemaSyncProgress>
+    {
+        private int _completedPackages;
+
+        public void Report(NFeSchemaSyncProgress value)
+        {
+            var completedPackages = value.Kind == NFeSchemaSyncProgressKind.PackageCompleted
+                ? Interlocked.Increment(ref _completedPackages)
+                : value.CompletedCount;
+
+            logger.LogInformation(
+                "Schema sync progress: {ProgressKind}. {ProgressMessage}. PackageUrl={PackageUrl}, PackageText={PackageText}, FileName={FileName}, CompletedCount={CompletedCount}, TotalCount={TotalCount}",
+                value.Kind,
+                value.Message,
+                value.PackageUrl,
+                value.PackageText,
+                value.FileName,
+                completedPackages,
+                value.TotalCount);
+        }
+    }
+
     internal sealed class CliOptions
     {
         public string OutputDirectory { get; private init; } = "schemas/v4";
@@ -122,6 +154,8 @@ namespace NFeSchemaDownloader.Cli
 
         public bool ValidateSchemas { get; private init; }
 
+        public bool JsonLogs { get; private init; }
+
         public static bool TryParse(string[] args, out CliOptions options, out string? errorMessage)
         {
             var outputDirectory = "schemas/v4";
@@ -133,6 +167,7 @@ namespace NFeSchemaDownloader.Cli
             var retryCount = 3;
             var retryBaseDelay = TimeSpan.FromSeconds(1);
             var validateSchemas = false;
+            var jsonLogs = false;
 
             for (var i = 0; i < args.Length; i++)
             {
@@ -226,6 +261,10 @@ namespace NFeSchemaDownloader.Cli
                         validateSchemas = true;
                         break;
 
+                    case "--json-logs":
+                        jsonLogs = true;
+                        break;
+
                     default:
                         options = new CliOptions();
                         errorMessage = $"Unknown option: {arg}";
@@ -243,7 +282,8 @@ namespace NFeSchemaDownloader.Cli
                 Force = force,
                 RetryCount = retryCount,
                 RetryBaseDelay = retryBaseDelay,
-                ValidateSchemas = validateSchemas
+                ValidateSchemas = validateSchemas,
+                JsonLogs = jsonLogs
             };
             errorMessage = null;
             return true;
@@ -263,6 +303,7 @@ namespace NFeSchemaDownloader.Cli
             Console.WriteLine("  --retry-count <number>    Retry count for transient HTTP failures. Default: 3");
             Console.WriteLine("  --retry-delay <value>     Base retry delay as seconds or TimeSpan. Default: 00:00:01");
             Console.WriteLine("  --validate-schemas        Validate extracted XSD files.");
+            Console.WriteLine("  --json-logs               Emit structured JSON logs, useful for CI.");
             Console.WriteLine("  -h, --help                Show this help.");
         }
 

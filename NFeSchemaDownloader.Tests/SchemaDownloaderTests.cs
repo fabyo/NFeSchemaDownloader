@@ -2,6 +2,7 @@ using System.IO.Compression;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
 using Microsoft.Extensions.Options;
 using Microsoft.Playwright;
 using Moq;
@@ -305,6 +306,85 @@ public class SchemaDownloaderTests
 
             // Assert
             Assert.True(File.Exists(Path.Combine(tempExtractionDir, "leiaute.xsd")));
+        }
+        finally
+        {
+            if (Directory.Exists(tempExtractionDir))
+            {
+                Directory.Delete(tempExtractionDir, true);
+            }
+        }
+    }
+
+    [Fact]
+    public async Task DownloadAndExtractAsync_ShouldRecordHttpMetadataInManifest()
+    {
+        // Arrange
+        var tempExtractionDir = Path.Combine(Path.GetTempPath(), "schemas_http_metadata_test_" + Guid.NewGuid());
+        var lastModified = new DateTimeOffset(2026, 1, 2, 3, 4, 5, TimeSpan.Zero);
+
+        var mockHandler = new Mock<HttpMessageHandler>();
+        mockHandler.Protected()
+            .Setup<Task<HttpResponseMessage>>(
+                "SendAsync",
+                ItExpr.IsAny<HttpRequestMessage>(),
+                ItExpr.IsAny<CancellationToken>()
+            )
+            .ReturnsAsync(() =>
+            {
+                var zipStream = CreateMockZipStream();
+                var content = new StreamContent(zipStream)
+                {
+                    Headers =
+                    {
+                        ContentType = new MediaTypeHeaderValue("application/download"),
+                        ContentDisposition = new ContentDispositionHeaderValue("attachment")
+                        {
+                            FileName = "schema-package.zip"
+                        },
+                        ContentLength = zipStream.Length,
+                        LastModified = lastModified
+                    }
+                };
+
+                var response = new HttpResponseMessage
+                {
+                    StatusCode = HttpStatusCode.OK,
+                    Content = content
+                };
+                response.Headers.ETag = new EntityTagHeaderValue("\"abc123\"");
+
+                return response;
+            });
+
+        var downloader = CreateDownloader(mockHandler.Object, tempExtractionDir);
+        var packages = new List<ReleasePackage>
+        {
+            new ReleasePackage
+            {
+                Date = new DateTime(2026, 1, 1),
+                Text = "Pacote Fake 1.00",
+                Url = "https://fake.sefaz.gov.br/download"
+            }
+        };
+
+        try
+        {
+            // Act
+            await downloader.DownloadAndExtractAsync(packages, []);
+
+            // Assert
+            var manifestPath = Path.Combine(tempExtractionDir, ".nfe-schema-manifest.json");
+            await using var manifestStream = File.OpenRead(manifestPath);
+            var manifest = await JsonSerializer.DeserializeAsync<SchemaManifest>(manifestStream);
+            var httpMetadata = Assert.Single(manifest!.Packages).HttpMetadata;
+
+            Assert.NotNull(httpMetadata);
+            Assert.Equal("schema-package.zip", httpMetadata.RemoteFileName);
+            Assert.Equal("application/download", httpMetadata.ContentType);
+            Assert.True(httpMetadata.ContentLength > 0);
+            Assert.Equal("\"abc123\"", httpMetadata.ETag);
+            Assert.Equal(lastModified, httpMetadata.LastModified);
         }
         finally
         {

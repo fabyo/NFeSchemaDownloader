@@ -196,6 +196,16 @@ public class SchemaDownloader : ISchemaDownloader
                         TotalCount: totalCount));
                 }
 
+                var httpMetadata = CreateHttpMetadata(response, packageFileName);
+                _logger.LogInformation(
+                    "HTTP metadata for package {PackageUrl}: Content-Type={ContentType}, Content-Length={ContentLength}, ETag={ETag}, Last-Modified={LastModified}, RemoteFileName={RemoteFileName}",
+                    pkg.Url,
+                    httpMetadata.ContentType,
+                    httpMetadata.ContentLength,
+                    httpMetadata.ETag,
+                    httpMetadata.LastModified,
+                    httpMetadata.RemoteFileName);
+
                 await using var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
 
                 await extractionGate.WaitAsync(cancellationToken);
@@ -206,7 +216,7 @@ public class SchemaDownloader : ISchemaDownloader
                     await manifestGate.WaitAsync(cancellationToken);
                     try
                     {
-                        manifest.UpsertPackage(pkg, extractedFiles);
+                        manifest.UpsertPackage(pkg, extractedFiles, httpMetadata);
                         await _manifestStore.SaveAsync(manifest, cancellationToken);
                     }
                     finally
@@ -322,6 +332,18 @@ public class SchemaDownloader : ISchemaDownloader
         var contentDisposition = response.Content.Headers.ContentDisposition;
         return contentDisposition?.FileNameStar?.Trim('"') ??
             contentDisposition?.FileName?.Trim('"');
+    }
+
+    private static ReleasePackageHttpMetadata CreateHttpMetadata(HttpResponseMessage response, string? packageFileName)
+    {
+        return new ReleasePackageHttpMetadata
+        {
+            RemoteFileName = string.IsNullOrWhiteSpace(packageFileName) ? null : packageFileName,
+            ContentType = response.Content.Headers.ContentType?.ToString(),
+            ContentLength = response.Content.Headers.ContentLength,
+            ETag = response.Headers.ETag?.ToString(),
+            LastModified = response.Content.Headers.LastModified
+        };
     }
 
     private static bool ContentTypeLooksLikeZip(HttpResponseMessage response)

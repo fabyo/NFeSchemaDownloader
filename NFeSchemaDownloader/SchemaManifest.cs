@@ -26,6 +26,37 @@ public sealed class ExtractedSchemaFile
 }
 
 /// <summary>
+/// HTTP metadata observed while downloading a release package.
+/// </summary>
+public sealed class ReleasePackageHttpMetadata
+{
+    /// <summary>
+    /// Gets or sets the filename reported by Content-Disposition, when available.
+    /// </summary>
+    public string? RemoteFileName { get; set; }
+
+    /// <summary>
+    /// Gets or sets the response Content-Type.
+    /// </summary>
+    public string? ContentType { get; set; }
+
+    /// <summary>
+    /// Gets or sets the response Content-Length.
+    /// </summary>
+    public long? ContentLength { get; set; }
+
+    /// <summary>
+    /// Gets or sets the response ETag.
+    /// </summary>
+    public string? ETag { get; set; }
+
+    /// <summary>
+    /// Gets or sets the response Last-Modified timestamp.
+    /// </summary>
+    public DateTimeOffset? LastModified { get; set; }
+}
+
+/// <summary>
 /// Local manifest used to skip packages that were already processed.
 /// </summary>
 public sealed class SchemaManifest
@@ -54,7 +85,11 @@ public sealed class SchemaManifest
     /// </summary>
     /// <param name="package">Package discovered from SEFAZ.</param>
     /// <param name="files">Files extracted from the package.</param>
-    public void UpsertPackage(ReleasePackage package, IReadOnlyList<ExtractedSchemaFile> files)
+    /// <param name="httpMetadata">HTTP metadata observed while downloading the package.</param>
+    public void UpsertPackage(
+        ReleasePackage package,
+        IReadOnlyList<ExtractedSchemaFile> files,
+        ReleasePackageHttpMetadata? httpMetadata = null)
     {
         Packages.RemoveAll(entry => string.Equals(entry.Url, package.Url, StringComparison.OrdinalIgnoreCase));
         Packages.Add(new SchemaManifestPackage
@@ -63,6 +98,7 @@ public sealed class SchemaManifest
             Text = package.Text,
             PublishedAt = package.Date,
             ProcessedAt = DateTimeOffset.UtcNow,
+            HttpMetadata = httpMetadata,
             Files = files.ToList()
         });
     }
@@ -92,6 +128,11 @@ public sealed class SchemaManifestPackage
     /// Gets or sets when this package was processed locally.
     /// </summary>
     public DateTimeOffset ProcessedAt { get; set; }
+
+    /// <summary>
+    /// Gets or sets HTTP metadata observed while downloading this package.
+    /// </summary>
+    public ReleasePackageHttpMetadata? HttpMetadata { get; set; }
 
     /// <summary>
     /// Gets or sets files extracted from this package.

@@ -131,6 +131,7 @@ dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj --
 dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj -- --playwright-timeout 180
 dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj -- --force
 dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj -- --validate-schemas
+dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj -- --json-logs
 ```
 
 Flags disponíveis:
@@ -146,11 +147,12 @@ Flags disponíveis:
 | `--retry-count <number>` | Número de retries para falhas HTTP transientes. |
 | `--retry-delay <seconds|TimeSpan>` | Delay base do backoff exponencial. |
 | `--validate-schemas` | Valida os arquivos XSD após a extração. |
+| `--json-logs` | Emite logs estruturados em JSON para uso em CI. |
 | `--help` | Mostra ajuda do CLI. |
 
 ## Manifesto Incremental
 
-O downloader cria um manifesto local chamado `.nfe-schema-manifest.json` dentro do diretório de extração. Ele registra os pacotes processados e os XSDs extraídos com tamanho e SHA-256.
+O downloader cria um manifesto local chamado `.nfe-schema-manifest.json` dentro do diretório de extração. Ele registra os pacotes processados, os metadados HTTP observados no download (`Content-Type`, `Content-Length`, `ETag`, `Last-Modified` e filename remoto) e os XSDs extraídos com tamanho e SHA-256.
 
 Quando overwrite está desativado, pacotes já registrados no manifesto são ignorados para evitar downloads redundantes. No CLI, use `--force` quando quiser baixar e sobrescrever novamente.
 
