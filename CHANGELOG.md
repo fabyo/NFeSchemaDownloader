@@ -7,6 +7,8 @@ e este projeto segue [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Não lançado]
 
+## [0.2.2] - 2026-06-23
+
 ### Adicionado
 - Registro de metadados HTTP de pacotes no manifesto incremental, incluindo `Content-Type`, `Content-Length`, `ETag`, `Last-Modified` e filename remoto.
 - Flag de CLI `--json-logs` para emitir logs estruturados em JSON em pipelines de CI.
