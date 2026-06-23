@@ -36,6 +36,7 @@ namespace NFeSchemaDownloader.Cli
                     {
                         options.ExtractionDirectory = cliOptions.OutputDirectory;
                         options.HttpTimeout = cliOptions.Timeout;
+                        options.PlaywrightNavigationTimeout = cliOptions.PlaywrightTimeout;
                         options.MaxDownloadConcurrency = cliOptions.Concurrency;
                         options.DryRun = cliOptions.DryRun;
                         options.OverwriteExistingFiles = cliOptions.Force;
@@ -107,6 +108,8 @@ namespace NFeSchemaDownloader.Cli
 
         public TimeSpan Timeout { get; private init; } = TimeSpan.FromMinutes(2);
 
+        public TimeSpan PlaywrightTimeout { get; private init; } = TimeSpan.FromSeconds(90);
+
         public int Concurrency { get; private init; } = 1;
 
         public bool DryRun { get; private init; }
@@ -123,6 +126,7 @@ namespace NFeSchemaDownloader.Cli
         {
             var outputDirectory = "schemas/v4";
             var timeout = TimeSpan.FromMinutes(2);
+            var playwrightTimeout = TimeSpan.FromSeconds(90);
             var concurrency = 1;
             var dryRun = false;
             var force = false;
@@ -159,6 +163,17 @@ namespace NFeSchemaDownloader.Cli
                         {
                             options = new CliOptions();
                             errorMessage ??= "Invalid --timeout value. Use seconds, for example 120, or a TimeSpan, for example 00:02:00.";
+                            return false;
+                        }
+
+                        break;
+
+                    case "--playwright-timeout":
+                        if (!TryReadValue(args, ref i, value, name, out var playwrightTimeoutValue, out errorMessage) ||
+                            !TryParseTimeout(playwrightTimeoutValue, out playwrightTimeout))
+                        {
+                            options = new CliOptions();
+                            errorMessage ??= "Invalid --playwright-timeout value. Use seconds, for example 90, or a TimeSpan, for example 00:01:30.";
                             return false;
                         }
 
@@ -222,6 +237,7 @@ namespace NFeSchemaDownloader.Cli
             {
                 OutputDirectory = outputDirectory,
                 Timeout = timeout,
+                PlaywrightTimeout = playwrightTimeout,
                 Concurrency = concurrency,
                 DryRun = dryRun,
                 Force = force,
@@ -240,6 +256,7 @@ namespace NFeSchemaDownloader.Cli
             Console.WriteLine("Options:");
             Console.WriteLine("  --output-dir <path>       Directory where XSD files are extracted. Default: schemas/v4");
             Console.WriteLine("  --timeout <value>         HTTP timeout as seconds or TimeSpan. Default: 00:02:00");
+            Console.WriteLine("  --playwright-timeout <value> Playwright navigation timeout as seconds or TimeSpan. Default: 00:01:30");
             Console.WriteLine("  --concurrency <number>    Maximum concurrent downloads. Default: 1");
             Console.WriteLine("  --dry-run                 List discovered packages without downloading.");
             Console.WriteLine("  --force                   Overwrite existing XSD files.");

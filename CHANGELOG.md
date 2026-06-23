@@ -12,6 +12,8 @@ e este projeto segue [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Flag de CLI `--validate-schemas` para habilitar validação dos XSDs extraídos.
 - Testes unitários para validação de XSD válido e rejeição de XSD inválido.
 - Extração transacional com diretório temporário e rollback para evitar XSDs parcialmente atualizados em caso de falha.
+- Opção `PlaywrightNavigationTimeout` e flag `--playwright-timeout` para configurar o timeout de navegação do Playwright.
+- Seção de troubleshooting no README para Playwright, SEFAZ, proxy, timeout, permissões e validação XSD.
 
 ## [0.2.1] - 2026-06-22
 ### Atualizado

@@ -76,6 +76,7 @@ services.AddNFeSchemaDownloader(options =>
     options.ExtractionDirectory = "schemas/v4";
     options.MaxDownloadConcurrency = 2;
     options.HttpTimeout = TimeSpan.FromMinutes(2);
+    options.PlaywrightNavigationTimeout = TimeSpan.FromSeconds(90);
     options.RetryCount = 3;
     options.RetryBaseDelay = TimeSpan.FromSeconds(1);
     options.ValidateExtractedSchemas = false;
@@ -105,6 +106,7 @@ services.AddSingleton<IProgress<NFeSchemaSyncProgress>>(
 | `ExtractionDirectory` | `schemas/v4` | Diretório onde os XSDs serão extraídos. |
 | `MaxDownloadConcurrency` | `1` | Quantidade máxima de downloads simultâneos. |
 | `HttpTimeout` | `00:02:00` | Timeout usado nos downloads HTTP. |
+| `PlaywrightNavigationTimeout` | `00:01:30` | Timeout usado na navegação do Playwright. |
 | `DryRun` | `false` | Lista pacotes descobertos sem baixar. |
 | `OverwriteExistingFiles` | `true` | Permite sobrescrever XSDs existentes. |
 | `ManifestFileName` | `.nfe-schema-manifest.json` | Arquivo de manifesto incremental. |
@@ -126,6 +128,7 @@ Exemplos:
 dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj -- --dry-run
 dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj -- --output-dir C:\schemas\nfe --concurrency 3
 dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj -- --timeout 120 --retry-count 5 --retry-delay 2
+dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj -- --playwright-timeout 180
 dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj -- --force
 dotnet run --project .\NFeSchemaDownloader.Cli\NFeSchemaDownloader.Cli.csproj -- --validate-schemas
 ```
@@ -136,6 +139,7 @@ Flags disponíveis:
 |---|---|
 | `--output-dir <path>` | Diretório onde os XSDs serão extraídos. |
 | `--timeout <seconds|TimeSpan>` | Timeout HTTP, por exemplo `120` ou `00:02:00`. |
+| `--playwright-timeout <seconds|TimeSpan>` | Timeout da navegação Playwright, por exemplo `180` ou `00:03:00`. |
 | `--concurrency <number>` | Máximo de downloads simultâneos. |
 | `--dry-run` | Lista pacotes encontrados sem baixar. |
 | `--force` | Sobrescreve arquivos existentes e reprocessa pacotes. |
@@ -180,6 +184,17 @@ Toda segunda-feira, de forma automática, o robô roda esse projeto na nuvem, ac
 - `NFeSchemaDownloader`: biblioteca reutilizável e pacote NuGet.
 - `NFeSchemaDownloader.Cli`: CLI para rodar a automação no GitHub Actions.
 - `schemas`: pasta oficial mantida sempre atualizada pelo robô onde ficam todos os XSDs extraídos.
+
+## Troubleshooting
+
+| Sintoma | Causa provável | Ação sugerida |
+|---|---|---|
+| Playwright falha ao abrir o navegador | Browsers do Playwright não instalados | Execute `pwsh .\NFeSchemaDownloader\bin\Debug\net10.0\playwright.ps1 install`. |
+| Timeout ao carregar a SEFAZ | Portal lento ou rede instável | Aumente `PlaywrightNavigationTimeout` ou use `--playwright-timeout 180`. |
+| Timeout durante download | ZIP grande, SEFAZ lenta ou proxy | Aumente `HttpTimeout` ou use `--timeout 300`. |
+| Erro de proxy corporativo | Ambiente exige proxy HTTP/HTTPS | Configure `HTTP_PROXY` e `HTTPS_PROXY` no ambiente antes da execução. |
+| Permissão negada ao salvar XSD | Diretório de saída sem permissão de escrita | Ajuste `--output-dir` para um caminho gravável. |
+| `--validate-schemas` falha | XSD inválido ou imports/includes indisponíveis | Rode sem validação para baixar, ou valide o pacote manualmente com os XSDs dependentes disponíveis. |
 
 ## 🔗 Projetos relacionados
 

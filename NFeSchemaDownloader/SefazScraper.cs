@@ -15,6 +15,7 @@ public class ReleasePackage
 public class SefazScraper : ISefazScraper
 {
     private readonly string _baseUrl;
+    private readonly TimeSpan _navigationTimeout;
     private readonly ISefazPackageParser _parser;
     private readonly ILogger<SefazScraper> _logger;
 
@@ -32,6 +33,7 @@ public class SefazScraper : ISefazScraper
         ILogger<SefazScraper>? logger = null)
     {
         _baseUrl = options.Value.BaseUrl;
+        _navigationTimeout = options.Value.PlaywrightNavigationTimeout;
         _parser = parser;
         _logger = logger ?? NullLogger<SefazScraper>.Instance;
     }
@@ -61,7 +63,11 @@ public class SefazScraper : ISefazScraper
         cancellationToken.ThrowIfCancellationRequested();
 
         _logger.LogInformation("Navigating to {BaseUrl}", _baseUrl);
-        await page.GotoAsync(_baseUrl, new PageGotoOptions { WaitUntil = WaitUntilState.DOMContentLoaded, Timeout = 90000 });
+        await page.GotoAsync(_baseUrl, new PageGotoOptions
+        {
+            WaitUntil = WaitUntilState.DOMContentLoaded,
+            Timeout = (float)_navigationTimeout.TotalMilliseconds
+        });
         cancellationToken.ThrowIfCancellationRequested();
 
         _logger.LogInformation("SEFAZ page loaded. Reading HTML");

@@ -31,6 +31,11 @@ public sealed class NFeSchemaOptions
     public TimeSpan HttpTimeout { get; set; } = TimeSpan.FromMinutes(2);
 
     /// <summary>
+    /// Gets or sets the timeout applied to Playwright page navigation.
+    /// </summary>
+    public TimeSpan PlaywrightNavigationTimeout { get; set; } = TimeSpan.FromSeconds(90);
+
+    /// <summary>
     /// Gets or sets whether synchronization should only list discovered packages without downloading them.
     /// </summary>
     public bool DryRun { get; set; }
