@@ -7,6 +7,11 @@ e este projeto segue [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Não lançado]
 
+## [0.2.3] - 2026-06-23
+
+### Corrigido
+- Atualizada a versão do pacote NuGet para forçar nova publicação após a release anterior.
+
 ## [0.2.2] - 2026-06-23
 
 ### Adicionado
