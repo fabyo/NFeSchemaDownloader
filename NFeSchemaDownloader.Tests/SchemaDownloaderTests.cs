@@ -74,7 +74,7 @@ public class SchemaDownloaderTests
     {
         // Arrange
         var tempExtractionDir = Path.Combine(Path.GetTempPath(), "schemas_test_" + Guid.NewGuid().ToString());
-        
+
         var mockHandler = new Mock<HttpMessageHandler>();
         mockHandler.Protected()
             .Setup<Task<HttpResponseMessage>>(
@@ -109,7 +109,7 @@ public class SchemaDownloaderTests
         // Assert
         Assert.True(Directory.Exists(tempExtractionDir));
         var files = Directory.GetFiles(tempExtractionDir, "*.xsd");
-        
+
         Assert.Single(files);
         Assert.EndsWith(".xsd", files[0]);
         Assert.Equal("leiaute.xsd", Path.GetFileName(files[0]));
