@@ -2,19 +2,17 @@ name: Publish NuGet
 
 on:
   push:
-    branches:
-      - main
-  schedule:
-    - cron: '0 8 * * 1' # At 08:00 on Monday
+    tags:
+      - 'v*'
   workflow_dispatch:
 
 jobs:
-  scrape-and-update:
+  publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
       id-token: write
-      
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -30,78 +28,16 @@ jobs:
           pwsh NFeSchemaDownloader.Cli/bin/Release/net10.0/playwright.ps1 install chromium
           dotnet test -c Release --no-build
 
-      - name: Run Scraper
-        run: dotnet run --project NFeSchemaDownloader.Cli/NFeSchemaDownloader.Cli.csproj -c Release
-
-      - name: Commit, Bump Version and Create Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add schemas/
-          FORCE_PUBLISH=$(git log -1 --pretty=%B | grep -i '\[force publish\]' || true)
-          HAS_SCHEMA_CHANGES=0
-          if ! git diff-index --quiet HEAD; then
-            HAS_SCHEMA_CHANGES=1
-          fi
-
-          # Extract current version from csproj
-          CURRENT_VERSION=$(grep -oP '(?<=<Version>)[^<]+' NFeSchemaDownloader/NFeSchemaDownloader.csproj)
-
-          if [ "$HAS_SCHEMA_CHANGES" -eq 0 ] && [ -z "$FORCE_PUBLISH" ]; then
-            echo "No new schemas downloaded. Creating keep-alive commit to prevent workflow suspension."
-            git commit --allow-empty -m "chore: keep-alive workflow to prevent suspension"
-            git push origin HEAD
-          else
-            if [ "$HAS_SCHEMA_CHANGES" -eq 0 ] && [ -n "$FORCE_PUBLISH" ]; then
-              NEW_VERSION="$CURRENT_VERSION"
-              echo "Force publishing current version $NEW_VERSION"
-            else
-              # Bump patch version
-              IFS='.' read -r -a VERSION_PARTS <<< "$CURRENT_VERSION"
-              NEW_PATCH=$((${VERSION_PARTS[2]} + 1))
-              NEW_VERSION="${VERSION_PARTS[0]}.${VERSION_PARTS[1]}.$NEW_PATCH"
-              
-              echo "Bumping version from $CURRENT_VERSION to $NEW_VERSION"
-              
-              # Get modified/added schemas
-              DATE=$(date +'%Y-%m-%d')
-              NEW_FILES_LIST=$(git ls-files --others --modified schemas/v4/ | sed 's/schemas\/v4\///' | awk '{print "- " $0}')
-              
-              # Update CHANGELOG.md (inserts the new release info right after the unreleased section)
-              awk -v ver="## [$NEW_VERSION] - $DATE" -v changes="### Updated Schemas\n$NEW_FILES_LIST\n" '/^## \[(Unreleased|N.o lan.ado|Não lançado)\]/{print; print ""; print ver; print changes; next}1' CHANGELOG.md > temp_cl.md && mv temp_cl.md CHANGELOG.md
-              
-              # Update csproj
-              sed -i "s/<Version>$CURRENT_VERSION<\/Version>/<Version>$NEW_VERSION<\/Version>/" NFeSchemaDownloader/NFeSchemaDownloader.csproj
-              
-              # Commit files
-              git add NFeSchemaDownloader/NFeSchemaDownloader.csproj CHANGELOG.md
-              git commit -m "chore: auto-update schemas and bump version to v$NEW_VERSION"
-              git push origin HEAD
-            fi
-            
-            # Create GitHub Release
-            zip -r schemas.zip schemas/
-            gh release create v$NEW_VERSION schemas.zip --title "Release v$NEW_VERSION" --notes "Atualização automática dos pacotes XSD da SEFAZ."
-            
-            # Export the new version for the next steps
-            echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
-          fi
-
       - name: Pack NuGet
-        if: env.NEW_VERSION != ''
-        run: dotnet pack NFeSchemaDownloader/NFeSchemaDownloader.csproj -c Release -o ./artifacts /p:Version=${{ env.NEW_VERSION }}
+        run: dotnet pack NFeSchemaDownloader/NFeSchemaDownloader.csproj -c Release -o ./artifacts
 
       - name: NuGet Login
-        if: env.NEW_VERSION != ''
         uses: NuGet/login@v1
         id: login
         with:
           user: fabyoguima
 
       - name: Push to NuGet
-        if: env.NEW_VERSION != ''
         env:
           NUGET_API_KEY: ${{ steps.login.outputs.NUGET_API_KEY }}
         run: dotnet nuget push "./artifacts/*.nupkg" --api-key "$NUGET_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate
