@@ -16,6 +16,8 @@ public class SefazScraper : ISefazScraper
 {
     private readonly string _baseUrl;
     private readonly TimeSpan _navigationTimeout;
+    private readonly int _retryCount;
+    private readonly TimeSpan _retryBaseDelay;
     private readonly ISefazPackageParser _parser;
     private readonly ILogger<SefazScraper> _logger;
 
@@ -34,6 +36,8 @@ public class SefazScraper : ISefazScraper
     {
         _baseUrl = options.Value.BaseUrl;
         _navigationTimeout = options.Value.PlaywrightNavigationTimeout;
+        _retryCount = options.Value.RetryCount;
+        _retryBaseDelay = options.Value.RetryBaseDelay;
         _parser = parser;
         _logger = logger ?? NullLogger<SefazScraper>.Instance;
     }
@@ -62,12 +66,27 @@ public class SefazScraper : ISefazScraper
         var page = await context.NewPageAsync();
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogInformation("Navigating to {BaseUrl}", _baseUrl);
-        await page.GotoAsync(_baseUrl, new PageGotoOptions
+        int attempt = 0;
+        while (true)
         {
-            WaitUntil = WaitUntilState.DOMContentLoaded,
-            Timeout = (float)_navigationTimeout.TotalMilliseconds
-        });
+            attempt++;
+            try
+            {
+                _logger.LogInformation("Navigating to {BaseUrl} (Attempt {Attempt}/{MaxAttempts})", _baseUrl, attempt, _retryCount + 1);
+                await page.GotoAsync(_baseUrl, new PageGotoOptions
+                {
+                    WaitUntil = WaitUntilState.DOMContentLoaded,
+                    Timeout = (float)_navigationTimeout.TotalMilliseconds
+                });
+                break;
+            }
+            catch (Exception ex) when (attempt <= _retryCount)
+            {
+                var delay = TimeSpan.FromMilliseconds(_retryBaseDelay.TotalMilliseconds * Math.Pow(2, attempt - 1));
+                _logger.LogWarning(ex, "Failed to navigate to SEFAZ portal. Retrying in {Delay}...", delay);
+                await Task.Delay(delay, cancellationToken);
+            }
+        }
         cancellationToken.ThrowIfCancellationRequested();
 
         _logger.LogInformation("SEFAZ page loaded. Reading HTML");
