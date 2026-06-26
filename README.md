@@ -204,6 +204,7 @@ O ecossistema fiscal open-source é gigante! Conheça também:
 
 | Projeto | Descrição |
 |---|---|
+| [NFEEmissor](https://github.com/fabyo/NFEEmissor) | Emissor completo de Nota Fiscal Eletrônica (NF-e). |
 | [NFEDanfe](https://github.com/fabyo/NFEDanfe) | Gera PDFs oficiais e bem feitos de DANFE a partir de XMLs da NF-e autorizada. |
 | [NFEConsulta](https://github.com/fabyo/NFEConsulta) | Consulta NF-e, valida XML e verifica status oficial da SEFAZ. |
 
@@ -211,6 +212,12 @@ O ecossistema fiscal open-source é gigante! Conheça também:
 
 ```text
 NFeSchemaDownloader (Mantém os arquivos XSD atualizados para validação prévia)
+   │
+   ▼
+NFEEmissor (Gera o XML da NF-e)
+   │
+   ▼
+NF-e XML
    │
    ▼
 NFEConsulta (Valida XML e consulta autorização)
